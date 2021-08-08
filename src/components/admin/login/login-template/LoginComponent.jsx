@@ -1,6 +1,41 @@
 import React, { Component } from 'react';
+import AuthenticationSessionService from '../../homepage/test/AuthenticationSessionService.js';
 
-class Login extends Component {
+class LoginComponent extends Component {
+
+    // Constructor
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "admin",
+            password: "admin",
+            hasLoginFailed: false,
+            showSuccessMessage: false
+
+        }
+    }
+
+    // Execute function
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    loginClicked = (event) => {
+        //console.log(this.state);
+        if (this.state.username === 'admin' && this.state.password === 'admin') {
+            AuthenticationSessionService.registerSuccessFullLogin(this.state.username, this.state.password);
+            //this.props.history.push("/home-page")
+            this.props.history.push(`/home-page/${this.state.username}`)
+            this.setState({ showSuccessMessage: true })
+            this.setState({ hasLoginFailed: false })
+        }
+        else {
+            this.setState({ showSuccessMessage: false })
+            this.setState({ hasLoginFailed: true })
+        }
+    }
     render() {
         return (
             <div>
@@ -24,15 +59,29 @@ class Login extends Component {
                             <form className="login100-form validate-form">
                                 <span className="login100-form-title p-b-49">
                                     Login
+                                    {/* || <ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed} /> */}
+                                    { this.state.hasLoginFailed && <div> <span>Invalid Credentical</span> </div> }
+                                    {/* || <ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage} /> */}
+                                    { this.state.showSuccessMessage &&  <div> <span>Login Success</span> </div> }
                                 </span>
                                 <div className="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                                     <span className="label-input100">Username</span>
-                                    <input className="input100" type="text" name="username" placeholder="Type your username" />
+                                    <input className="input100"
+                                        type="text"
+                                        name="username"
+                                        placeholder="Type your username"
+                                        defaultValue={this.state.username}
+                                        onChange={this.handleChange} />
                                     <span className="focus-input100" data-symbol="" />
                                 </div>
                                 <div className="wrap-input100 validate-input" data-validate="Password is required">
                                     <span className="label-input100">Password</span>
-                                    <input className="input100" type="password" name="pass" placeholder="Type your password" />
+                                    <input className="input100"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Type your password"
+                                        defaultValue={this.state.password}
+                                        onChange={this.handleChange} />
                                     <span className="focus-input100" data-symbol="" />
                                 </div>
                                 <div className="text-right p-t-8 p-b-31">
@@ -43,7 +92,8 @@ class Login extends Component {
                                 <div className="container-login100-form-btn">
                                     <div className="wrap-login100-form-btn">
                                         <div className="login100-form-bgbtn" />
-                                        <button className="login100-form-btn">
+                                        <button className="login100-form-btn"
+                                            onClick={this.loginClicked}>
                                             Login
                                         </button>
                                     </div>
@@ -83,4 +133,30 @@ class Login extends Component {
     }
 }
 
-export default Login;
+// function ShowInvalidCredentials(props) {
+//     if (props.hasLoginFailed) {
+//         return (
+//             <div>
+//                 <div>
+//                     <span>Invalid Credentical</span>
+//                 </div>
+//             </div>
+//         );
+//     }
+//     return null
+// }
+
+// function ShowLoginSuccessMessage(props) {
+//     if (props.showSuccessMessage) {
+//         return (
+//             <div>
+//                 <div>
+//                     <span>Login Success</span>
+//                 </div>
+//             </div>
+//         );
+//     }
+//     return null
+// }
+
+export default LoginComponent;
