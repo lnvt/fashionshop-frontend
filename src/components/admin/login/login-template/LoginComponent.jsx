@@ -39,22 +39,8 @@ class LoginComponent extends Component {
     render() {
         return (
             <div>
-                <title>Login V4</title>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/bootstrap/css/bootstrap.min.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/fonts/iconic/css/material-design-iconic-font.min.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/animate/animate.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/css-hamburgers/hamburgers.min.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/animsition/css/animsition.min.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/select2/select2.min.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/daterangepicker/daterangepicker.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/css/util.css" />
-                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/css/main.css" />
                 <div className="limiter">
-                    <div className="container-login100" style={{ backgroundImage: 'url("images/bg-01.jpg")' }}>
+                    <div className="container-login100 imgBg" style={{backgroundColor: "lightpink"}}>
                         <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
                             <form className="login100-form validate-form">
                                 <span className="login100-form-title p-b-49">
@@ -133,30 +119,6 @@ class LoginComponent extends Component {
     }
 }
 
-// function ShowInvalidCredentials(props) {
-//     if (props.hasLoginFailed) {
-//         return (
-//             <div>
-//                 <div>
-//                     <span>Invalid Credentical</span>
-//                 </div>
-//             </div>
-//         );
-//     }
-//     return null
-// }
 
-// function ShowLoginSuccessMessage(props) {
-//     if (props.showSuccessMessage) {
-//         return (
-//             <div>
-//                 <div>
-//                     <span>Login Success</span>
-//                 </div>
-//             </div>
-//         );
-//     }
-//     return null
-// }
 
 export default LoginComponent;
