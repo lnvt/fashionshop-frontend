@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './components/admin/login/login-template/LoginComponent';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginComponent from './components/admin/login/login-template/LoginComponent';
 import HomepageComponent from './components/admin/homepage/homepage-template/HomepageComponent';
 import ErrorPageComponent from './components/admin/homepage/homepage-template/ErrorPageComponent';

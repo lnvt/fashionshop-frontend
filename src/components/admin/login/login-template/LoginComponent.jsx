@@ -43,16 +43,16 @@ class LoginComponent extends Component {
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/vendor/bootstrap/css/bootstrap.min.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/fonts/iconic/css/material-design-iconic-font.min.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/vendor/animate/animate.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/vendor/css-hamburgers/hamburgers.min.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/vendor/animsition/css/animsition.min.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/vendor/select2/select2.min.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/vendor/daterangepicker/daterangepicker.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/css/util.css" />
-                <link rel="stylesheet" type="text/css" href="../login-assets/css/main.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/bootstrap/css/bootstrap.min.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/fonts/iconic/css/material-design-iconic-font.min.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/animate/animate.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/css-hamburgers/hamburgers.min.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/animsition/css/animsition.min.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/select2/select2.min.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/vendor/daterangepicker/daterangepicker.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/css/util.css" />
+                <link rel="stylesheet" type="text/css" href="public/assets/admin/login-assets/css/main.css" />
                 <div className="limiter">
                     <div className="container-login100" style={{ backgroundImage: 'url("images/bg-01.jpg")' }}>
                         <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
