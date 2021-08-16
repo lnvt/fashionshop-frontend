@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthenticationSessionService from '../../homepage/test/AuthenticationSessionService.js';
+import './LoginStyle.css';
 
 class LoginComponent extends Component {
 
@@ -7,8 +8,8 @@ class LoginComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "admin",
-            password: "admin",
+            username: "",
+            password: "",
             hasLoginFailed: false,
             showSuccessMessage: false
 
@@ -40,7 +41,7 @@ class LoginComponent extends Component {
         return (
             <div>
                 <div className="limiter">
-                    <div className="container-login100 imgBg" style={{backgroundColor: "lightpink"}}>
+                    <div className="container-login100 imgBg background-login">
                         <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
                             <form className="login100-form validate-form">
                                 <span className="login100-form-title p-b-49">
