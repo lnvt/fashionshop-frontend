@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class LeftMenuComponent extends Component {
+
+  LeftMenuOut = () =>{
+    console.log("Menu out!");
+  }
   render() {
     return (
       <div>
@@ -68,8 +72,14 @@ class LeftMenuComponent extends Component {
             </div>
           </li>
           {/* Sidebar Message */}
+          <div className="btn btn-danger" 
+                style={{ width: 50, alignSelf:"center"}}
+                onClick = {this.LeftMenuOut}>
+            <i class="bi bi-arrow-left-square-fill"></i>
+          </div>
         </ul>
         {/* End of Sidebar */}
+
       </div>
     );
   }

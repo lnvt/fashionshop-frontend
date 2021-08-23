@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import FooterHomepageComponent from './FooterHomepageComponent';
-import HeaderHompageComponent from './HeaderHompageComponent';
-
+import FooterHomepageComponent from '../footer-homepage/FooterHomepageComponent';
+import HeaderHompageComponent from '../header-homepage/HeaderHompageComponent';
+import './ContentHomepageStyle.css';
 class ContentHomepageComponent extends Component {
     render() {
         return (
-            <div>
+            <div className = "contentPage">
                 <div id="content-wrapper" className="d-flex flex-column">
                     <div id="content">
                         <HeaderHompageComponent />

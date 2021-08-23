@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ContentHomepageComponent from './ContentHomepageComponent';
-import LeftMenuComponent from './LeftMenuComponent';
+import ContentHomepageComponent from '../content-homepage/ContentHomepageComponent';
+import LeftMenuComponent from '../menu/LeftMenuComponent';
 
 class HomepageComponent extends Component {
 
