@@ -47,9 +47,9 @@ class LoginComponent extends Component {
                                 <span className="login100-form-title p-b-49">
                                     Login
                                     {/* || <ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed} /> */}
-                                    { this.state.hasLoginFailed && <div> <span>Invalid Credentical</span> </div> }
+                                    {this.state.hasLoginFailed && <div> <span>Invalid Credentical</span> </div>}
                                     {/* || <ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage} /> */}
-                                    { this.state.showSuccessMessage &&  <div> <span>Login Success</span> </div> }
+                                    {this.state.showSuccessMessage && <div> <span>Login Success</span> </div>}
                                 </span>
                                 <div className="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                                     <span className="label-input100">Username</span>
@@ -92,21 +92,13 @@ class LoginComponent extends Component {
                                 </div>
                                 <div className="flex-c-m">
                                     <a href="#" className="login100-social-item bg1">
-                                        <i className="fa fa-facebook" />
+                                        <i className="bi bi-facebook" />
                                     </a>
                                     <a href="#" className="login100-social-item bg2">
-                                        <i className="fa fa-twitter" />
+                                        <i className="bi bi-twitter" />
                                     </a>
                                     <a href="#" className="login100-social-item bg3">
-                                        <i className="fa fa-google" />
-                                    </a>
-                                </div>
-                                <div className="flex-col-c p-t-155">
-                                    <span className="txt1 p-b-17">
-                                        Or Sign Up Using
-                                    </span>
-                                    <a href="#" className="txt2">
-                                        Sign Up
+                                        <i className="bi bi-google" />
                                     </a>
                                 </div>
                             </form>

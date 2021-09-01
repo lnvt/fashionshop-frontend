@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import $ from "jquery";
+import { findDOMNode } from "react-dom";
+import './LeftMenuStyle.css';
 
 class LeftMenuComponent extends Component {
 
-  LeftMenuOut = () =>{
-    console.log("Menu out!");
+  handleToggleMenu = () => {
+    const toggleMenu = findDOMNode(this.refs.toggle);
+    $(toggleMenu).slideToggle();
   }
+
   render() {
     return (
-      <div>
+      <div >
         {/* Sidebar */}
-        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul ref = "toggle" className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
           {/* Sidebar - Brand */}
           <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div className="sidebar-brand-icon rotate-n-15">
@@ -72,14 +77,12 @@ class LeftMenuComponent extends Component {
             </div>
           </li>
           {/* Sidebar Message */}
-          <div className="btn btn-danger" 
-                style={{ width: 50, alignSelf:"center"}}
-                onClick = {this.LeftMenuOut}>
-            <i class="bi bi-arrow-left-square-fill"></i>
-          </div>
         </ul>
         {/* End of Sidebar */}
-
+        <div className="btn btn-danger btn-leftmenu" 
+                onClick = {this.handleToggleMenu}>
+            <i className="bi bi-arrow-left-square-fill"></i>
+          </div>
       </div>
     );
   }
