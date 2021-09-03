@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+
+.styleheader {
+    background-color: #e7879a;
+    display: flex;
+    justify-content: space-between;
+    min-height: 42px;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+}
+
+.nav-list {
+    padding-left: 0;
+    margin: auto 16px;
+}
+
+.nav-item {
+    list-style: none;
+    margin: 0 8px;
+    display: inline-block;
+    color: #fff;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-right {
+    margin-right: -36%;
+}
+
+.header_top {
+    padding-top: 10px;
+    display: flex;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.header_item {
+    flex: 1;
+}
+
+.header_top_1 {
+    flex: 1;
+}
+
+.header_top_2 {
+    flex: 3;
+}
+
+.header_top_3 {
+    flex: 1;
+}
+p {
+    font-family: 'Cookie', cursive;
+    color: #fff;
+    font-size: 30px;
+}
+.nav-item a:hover {
+    color: aqua;
+    transition: 1s;
+}
