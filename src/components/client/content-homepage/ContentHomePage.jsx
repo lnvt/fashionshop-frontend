@@ -10,14 +10,13 @@ class ContentHomePage extends Component {
                                     <h3>New Products</h3>
                                 </div>
                                 <div className="see">
-                                    <p><a href="#">See all Products</a></p>
+                                        <button className = "btn btn-outline-info">See all Products</button>
                                 </div>
                                 <div className="clear" />
                             </div>
                             <div className="section group">
                                 <div className="grid_1_of_4 images_1_of_4">
                                     <a href="preview.html">
-                                        {/* <img src={ImagesShoes} alt="" /> */}
                                         <img src="images/feature-pic2.jpg" alt="" />
                                     </a>
                                     <h2>Lorem Ipsum is simply </h2>
@@ -31,6 +30,81 @@ class ContentHomePage extends Component {
                                         <div className="clear" />
                                     </div>
                                 </div>
+                                <div className="grid_1_of_4 images_1_of_4">
+                                    <a href="preview.html">
+                                        <img src="images/feature-pic2.jpg" alt="" />
+                                    </a>
+                                    <h2>Lorem Ipsum is simply </h2>
+                                    <div className="price-details">
+                                        <div className="price-number">
+                                            <p><span className="rupees">$620.87</span></p>
+                                        </div>
+                                        <div className="add-cart">
+                                            <h4><a href="preview.html">Add to Cart</a></h4>
+                                        </div>
+                                        <div className="clear" />
+                                    </div>
+                                </div>
+                                <div className="grid_1_of_4 images_1_of_4">
+                                    <a href="preview.html">
+                                        <img src="images/feature-pic2.jpg" alt="" />
+                                    </a>
+                                    <h2>Lorem Ipsum is simply </h2>
+                                    <div className="price-details">
+                                        <div className="price-number">
+                                            <p><span className="rupees">$620.87</span></p>
+                                        </div>
+                                        <div className="add-cart">
+                                            <h4><a href="preview.html">Add to Cart</a></h4>
+                                        </div>
+                                        <div className="clear" />
+                                    </div>
+                                </div>
+                                <div className="grid_1_of_4 images_1_of_4">
+                                    <a href="preview.html">
+                                        <img src="images/feature-pic2.jpg" alt="" />
+                                    </a>
+                                    <h2>Lorem Ipsum is simply </h2>
+                                    <div className="price-details">
+                                        <div className="price-number">
+                                            <p><span className="rupees">$620.87</span></p>
+                                        </div>
+                                        <div className="add-cart">
+                                            <h4><a href="preview.html">Add to Cart</a></h4>
+                                        </div>
+                                        <div className="clear" />
+                                    </div>
+                                </div>
+                                <div className="grid_1_of_4 images_1_of_4">
+                                    <a href="preview.html">
+                                        <img src="images/feature-pic2.jpg" alt="" />
+                                    </a>
+                                    <h2>Lorem Ipsum is simply </h2>
+                                    <div className="price-details">
+                                        <div className="price-number">
+                                            <p><span className="rupees">$620.87</span></p>
+                                        </div>
+                                        <div className="add-cart">
+                                            <h4><a href="preview.html">Add to Cart</a></h4>
+                                        </div>
+                                        <div className="clear" />
+                                    </div>
+                                </div>
+                                <div className="grid_1_of_4 images_1_of_4">
+                                    <a href="preview.html">
+                                        <img src="images/feature-pic2.jpg" alt="" />
+                                    </a>
+                                    <h2>Lorem Ipsum is simply </h2>
+                                    <div className="price-details">
+                                        <div className="price-number">
+                                            <p><span className="rupees">$620.87</span></p>
+                                        </div>
+                                        <div className="add-cart">
+                                            <h4><a href="preview.html">Add to Cart</a></h4>
+                                        </div>
+                                        <div className="clear" />
+                                    </div>
+                                </div>                 
                             </div>
                             <div className="content_bottom">
                                 <div className="heading">

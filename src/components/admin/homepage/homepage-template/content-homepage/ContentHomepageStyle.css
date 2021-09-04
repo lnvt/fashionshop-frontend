@@ -1,3 +1,7 @@
 .contentPage {
     flex: 2;
 }
+
+.table_management {
+    width: 50%;
+}

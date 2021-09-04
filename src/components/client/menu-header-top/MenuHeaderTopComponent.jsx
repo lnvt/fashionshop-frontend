@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './MenuHeaderTopStyle.css';
-import logo from './logo-brand/logo.png';
 
 class MenuHeaderTopComponent extends Component {
     render() {
