@@ -47,15 +47,15 @@ class TodosComponent extends Component {
 
     handleAPIError = (error) => {
         console.log(error.response);
-        let errorMessage = "";
-        if(error.message) errorMessage += error.message
-        if(error.response && error.response.data)
-        {
-            errorMessage += error.response.data.message
-        }
-        this.setState({
-            messageServiceAPI: error.response.data.message
-        })
+        // let errorMessage = "";
+        // if(error.message) errorMessage += error.message
+        // if(error.response && error.response.data)
+        // {
+        //     errorMessage += error.response.data.message
+        // }
+        // this.setState({
+        //     messageServiceAPI: error.response.data.message
+        // })
     }
 
     render() {

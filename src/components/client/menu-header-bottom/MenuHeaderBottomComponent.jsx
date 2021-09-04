@@ -12,19 +12,19 @@ class MenuHeaderBottomComponent extends Component {
             <div className="menu-bottom">
                 <ul>
                     <li>
-                        <a href=""> 
+                        <a href="/#"> 
                             <img src={bags} alt="bags" /> 
                          </a>
-                         <a href=""> 
+                         <a href="/#"> 
                             <img src={caps} alt="caps" /> 
                          </a>
-                         <a href="">
+                         <a href="/#">
                             <img src={clothes} alt="clothes" />
                         </a>
-                        <a href="">
+                        <a href="/#">
                             <img src={cosmetics} alt="cosmetics" />
                         </a>
-                        <a href="">
+                        <a href="/#">
                             <img src={shoes} alt="shoes" />
                         </a>
                     </li>

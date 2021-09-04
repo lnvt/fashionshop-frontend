@@ -37,7 +37,7 @@ class LeftMenuComponent extends Component {
           </div>
           {/* Nav Item - Pages Collapse Menu */}
           <li className="nav-item">
-            <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <a className="nav-link collapsed" href="/#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
               <i className="fas fa-fw fa-folder" />
               <span>Pages</span>
             </a>

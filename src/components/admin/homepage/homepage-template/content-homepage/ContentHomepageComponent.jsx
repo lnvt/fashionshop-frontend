@@ -26,7 +26,7 @@ class ContentHomepageComponent extends Component {
                                 <h1>Account Administration</h1>
                             </div>
                             <div className="row">
-                                <table class="table table-hover table_management">
+                                <table className="table table-hover table_management">
                                     <thead className="table-info">
                                         <tr>
                                             <th scope="col">ID</th>

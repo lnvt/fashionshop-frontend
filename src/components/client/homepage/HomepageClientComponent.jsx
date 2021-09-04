@@ -34,7 +34,7 @@ class HomepageClient extends Component {
                 <div className="footer wrap">
                     <FooterComponent/>
                 </div>
-                <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+                <a href="/#" id="toTop"><span id="toTopHover"> </span></a>
             </div>
         );
     }

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import bags from '../menu-header-bottom/img-menu/bags.png';
 import caps from '../menu-header-bottom/img-menu/caps.png';
 import clothes from '../menu-header-bottom/img-menu/clothes.png';
-import cosmetics from '../menu-header-bottom/img-menu/cosmetics.png';
-import shoes from '../menu-header-bottom/img-menu/shoes.png';
 import './MenuRightStyle.css';
 
 

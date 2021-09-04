@@ -111,7 +111,7 @@ class ContentHomePage extends Component {
                                     <h3>Feature Products</h3>
                                 </div>
                                 <div className="see">
-                                    <p><a href="#">See all Products</a></p>
+                                    <p><a href="/#">See all Products</a></p>
                                 </div>
                                 <div className="clear" />
                             </div>

@@ -8,30 +8,30 @@ class MenuHeaderTopComponent extends Component {
                 <div className="">
                     <div className="styleheader">
                         <ul className="nav-list nav-left">
-                            <li className="nav-item"><a href="#">Salesman</a></li>
-                            <li className="nav-item"><a href="#">Delivery</a></li>
-                            <li className="nav-item"><a href="#">Download</a></li>
+                            <li className="nav-item"><a href="/#">Salesman</a></li>
+                            <li className="nav-item"><a href="/#">Delivery</a></li>
+                            <li className="nav-item"><a href="/#">Download</a></li>
                             <li className="nav-item">
                                 Connect &nbsp;
-                                <a className="btn btn-info bi bi-facebook"></a> &nbsp;
-                                <a className="btn btn-danger bi bi-google"></a>
+                                <button className="btn btn-info bi bi-facebook" href="/#"></button> &nbsp;
+                                <button className="btn btn-danger bi bi-google" href="/#"></button>
                             </li>
                         </ul>
                         <ul className="nav-list nav-right">
                             <li className="nav-item">
-                                <a href="#">
+                                <a href="/#">
                                     Notification
                                 </a> &nbsp;
                                 <i class="bi bi-bell"></i>
                             </li>
                             <li className="nav-item">
-                                <a href="#">
+                                <a href="/#">
                                     Support
                                 </a> &nbsp;
                                 <i class="bi bi-question-octagon"></i>
                             </li>
-                            <li className="nav-item"><a href="#">Sign in</a></li>
-                            <li className="nav-item"><a href="#">Sign up</a></li>
+                            <li className="nav-item"><a href="/#">Sign in</a></li>
+                            <li className="nav-item"><a href="/#">Sign up</a></li>
                         </ul>
                         <div className="clear" />
                     </div>

@@ -1,11 +1,11 @@
 
 class AuthenticationSessionService {
-    registerSuccessFullLogin(username, password){
+    registerSuccessFullLogin(username){
         sessionStorage.setItem('authenticatedUser', username);
     }
 
     logout(){
-        sessionStorage.removeItem('authenticatedUser')
+        sessionStorage.removeItem('authenticatedUser');
     }
 
     isUserLoggedIn() {
@@ -15,4 +15,4 @@ class AuthenticationSessionService {
     }
 }
 
-export default new AuthenticationSessionService;
+export default AuthenticationSessionService;

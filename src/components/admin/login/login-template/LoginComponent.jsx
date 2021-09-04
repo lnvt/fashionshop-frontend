@@ -72,7 +72,7 @@ class LoginComponent extends Component {
                                     <span className="focus-input100" data-symbol="" />
                                 </div>
                                 <div className="text-right p-t-8 p-b-31">
-                                    <a href="#">
+                                    <a href="/#">
                                         Forgot password?
                                     </a>
                                 </div>
@@ -91,13 +91,13 @@ class LoginComponent extends Component {
                                     </span>
                                 </div>
                                 <div className="flex-c-m">
-                                    <a href="#" className="login100-social-item bg1">
+                                    <a href="/#" className="login100-social-item bg1">
                                         <i className="bi bi-facebook" />
                                     </a>
-                                    <a href="#" className="login100-social-item bg2">
+                                    <a href="/#" className="login100-social-item bg2">
                                         <i className="bi bi-twitter" />
                                     </a>
-                                    <a href="#" className="login100-social-item bg3">
+                                    <a href="/#" className="login100-social-item bg3">
                                         <i className="bi bi-google" />
                                     </a>
                                 </div>
