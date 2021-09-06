@@ -27,7 +27,7 @@ class LeftMenuComponent extends Component {
           <li className="nav-item active">
             <a className="nav-link" href="index.html">
               <i className="bi bi-people-fill" />
-              <span>Account Management</span></a>
+              <span>Account</span></a>
           </li>
           {/* Divider */}
           <hr className="sidebar-divider" />
