@@ -7,6 +7,8 @@ import ErrorPageComponent from './components/admin/homepage/homepage-template/er
 import TodosComponent from './components/admin/homepage/test/TodosComponent';
 import LogoutComponent from './components/admin/logout/logout-template/LogoutComponent';
 import HomepageClient from './components/client/homepage/HomepageClientComponent';
+import DetailProductComponent from './components/client/detail-product/DetailProductComponent';
+import UpdateAccountComponent from './components/admin/homepage/homepage-template/content-homepage/UpdateAccountComponent';
 
 class App extends Component {
 
@@ -23,6 +25,8 @@ class App extends Component {
               <Route path="/todos" component={TodosComponent} />
               <Route path="/log-out" component={LogoutComponent} />
               <Route path="/daisyhouse" component={HomepageClient} />
+              <Route path="/account/:id" component={UpdateAccountComponent} />
+              <Route path="/daisyhouse/detail/:id" component={DetailProductComponent} />
               <Route component={ErrorPageComponent} />
             </Switch>
           </>

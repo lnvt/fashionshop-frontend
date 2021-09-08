@@ -4,25 +4,45 @@ import HeaderHompageComponent from '../header-homepage/HeaderHompageComponent';
 import './ContentHomepageStyle.css';
 import AdminServices from '../../../services/AdminServices';
 
+
 class ContentHomepageComponent extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            account: []
+            account: [],
+            message: null
         }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
+        this.refreshAccount();
+    }
+
+    refreshAccount = () => {
         AdminServices.retrieveAllAccount()
             .then(response => {
                 this.setState({
                     account: response.data
-                })
+                });
             })
     }
 
-    
+    deleteAccountClicked = (id) => {
+        AdminServices.deleteAccountById(id)
+            .then(
+                response => {
+                    this.setState({ message: `Deleted ${id} successfull!` });
+                    this.refreshAccount();
+                })
+    }
+
+    updateAccountClicked = (id) => {
+        console.log("Id update: " + id);
+    }
+
+
+
     render() {
         return (
             <div className="contentPage">
@@ -32,9 +52,12 @@ class ContentHomepageComponent extends Component {
                         <div className="container-fluid">
                             <div className="d-sm-flex align-items-center justify-content-between mb-4">
                                 <h1>Account Administration</h1>
+                                {this.state.message && <div className="alert alert-success"> {this.state.message} </div>}
                             </div>
-
-                            <div className="row  d-flex justify-content-center mx-auto">
+                            <div className="btn btn-info mb-2">
+                                Create Account
+                            </div>
+                            <div className="row  d-flex justify-content-center">
                                 <table className="table table-hover table_management ">
                                     <thead className="table-info">
                                         <tr>
@@ -55,9 +78,13 @@ class ContentHomepageComponent extends Component {
                                                 <td>{item.status.toString()}</td>
                                                 <td>{item.created_date}</td>
                                                 <td>
-                                                    <button className="btn btn-warning">Update</button>
+                                                    <button className="btn btn-warning"
+                                                        onClick={() => this.updateAccountClicked(item.id)}>
+                                                        Update
+                                                    </button>
                                                     &nbsp;
-                                                    <button className="btn btn-danger">Delete</button>
+                                                    <button className="btn btn-danger"
+                                                        onClick={() => this.deleteAccountClicked(item.id)}>Delete</button>
                                                 </td>
                                             </tr>
                                         )}

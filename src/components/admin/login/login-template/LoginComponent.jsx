@@ -24,7 +24,7 @@ class LoginComponent extends Component {
     }
 
     loginClicked = (event) => {
-        //console.log(this.state);
+        console.log(this.state);
         if (this.state.username === 'admin' && this.state.password === 'admin') {
             AuthenticationSessionService.registerSuccessFullLogin(this.state.username, this.state.password);
             //this.props.history.push("/home-page")
@@ -46,10 +46,6 @@ class LoginComponent extends Component {
                             <form className="login100-form validate-form">
                                 <span className="login100-form-title p-b-49">
                                     Login
-                                    {/* || <ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed} /> */}
-                                    {this.state.hasLoginFailed && <div> <span>Invalid Credentical</span> </div>}
-                                    {/* || <ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage} /> */}
-                                    {this.state.showSuccessMessage && <div> <span>Login Success</span> </div>}
                                 </span>
                                 <div className="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                                     <span className="label-input100">Username</span>

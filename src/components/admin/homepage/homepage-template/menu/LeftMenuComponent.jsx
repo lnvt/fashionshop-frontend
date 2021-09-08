@@ -24,27 +24,16 @@ class LeftMenuComponent extends Component {
           {/* Divider */}
           <hr className="sidebar-divider my-0" />
           {/* Nav Item - Dashboard */}
-          <li className="nav-item active">
-            <a className="nav-link" href="index.html">
-              <i className="bi bi-people-fill" />
-              <span>Account</span></a>
-          </li>
-          {/* Divider */}
-          <hr className="sidebar-divider" />
-          {/* Heading */}
-          <div className="sidebar-heading">
-            Addons
-          </div>
-          {/* Nav Item - Pages Collapse Menu */}
+          
           <li className="nav-item">
             <a className="nav-link collapsed" href="/#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
               <i className="fas fa-fw fa-folder" />
-              <span>Pages</span>
+              <span>Admin</span>
             </a>
             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div className="bg-white py-2 collapse-inner rounded">
-                <h6 className="collapse-header">Login Screens:</h6>
-                <a className="collapse-item" href="login.html">Login</a>
+                <h6 className="collapse-header">Account</h6>
+                <a className="collapse-item" href="login.html">Management</a>
                 <a className="collapse-item" href="register.html">Register</a>
                 <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
                 <div className="collapse-divider" />
