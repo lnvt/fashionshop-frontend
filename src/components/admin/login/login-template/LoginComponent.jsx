@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import AuthenticationSessionService from '../../homepage/test/AuthenticationSessionService.js';
 import './LoginStyle.css';
+import Swal from 'sweetalert2'
+
 
 class LoginComponent extends Component {
 
@@ -10,9 +11,6 @@ class LoginComponent extends Component {
         this.state = {
             username: "",
             password: "",
-            hasLoginFailed: false,
-            showSuccessMessage: false
-
         }
     }
 
@@ -24,17 +22,21 @@ class LoginComponent extends Component {
     }
 
     loginClicked = (event) => {
-        console.log(this.state);
+        event.preventDefault()
         if (this.state.username === 'admin' && this.state.password === 'admin') {
-            AuthenticationSessionService.registerSuccessFullLogin(this.state.username, this.state.password);
-            //this.props.history.push("/home-page")
-            this.props.history.push(`/home-page/${this.state.username}`)
-            this.setState({ showSuccessMessage: true })
-            this.setState({ hasLoginFailed: false })
+            this.props.history.push("/home-page"); 
         }
         else {
-            this.setState({ showSuccessMessage: false })
-            this.setState({ hasLoginFailed: true })
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Error',
+                width: 300,
+                heigth: 50,
+                text: 'Wrong username or password. Try it again',
+                showConfirmButton: false,
+                timer: 2000
+              })
         }
     }
     render() {

@@ -36,10 +36,6 @@ class LeftMenuComponent extends Component {
                 <a className="collapse-item" href="login.html">Management</a>
                 <a className="collapse-item" href="register.html">Register</a>
                 <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div className="collapse-divider" />
-                <h6 className="collapse-header">Other Pages:</h6>
-                <a className="collapse-item" href="404.html">404 Page</a>
-                <a className="collapse-item" href="blank.html">Blank Page</a>
               </div>
             </div>
           </li>

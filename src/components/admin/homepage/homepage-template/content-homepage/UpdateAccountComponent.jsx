@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FooterHomepageComponent from '../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../header-homepage/HeaderHompageComponent';
-import { Formik, Form } from 'formik';
 
 class UpdateAccountComponent extends Component {
 
@@ -25,7 +24,7 @@ class UpdateAccountComponent extends Component {
                                     <h1> Update Account Id - {this.props.match.params.id} </h1>
                                 </div>
                                 <div className="row  d-flex justify-content-center">
-                                    <Formik>
+                                    {/* <Formik>
                                         {
                                             (props) => (
                                                 <Form>
@@ -46,7 +45,7 @@ class UpdateAccountComponent extends Component {
                                                 </Form>
                                             )
                                         }
-                                    </Formik>
+                                    </Formik> */}
                                 </div>
                             </div>
                         </div>

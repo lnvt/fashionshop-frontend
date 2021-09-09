@@ -3,7 +3,7 @@ import FooterHomepageComponent from '../footer-homepage/FooterHomepageComponent'
 import HeaderHompageComponent from '../header-homepage/HeaderHompageComponent';
 import './ContentHomepageStyle.css';
 import AdminServices from '../../../services/AdminServices';
-
+import Swal from 'sweetalert2'
 
 class ContentHomepageComponent extends Component {
 
@@ -17,6 +17,16 @@ class ContentHomepageComponent extends Component {
 
     componentDidMount = () => {
         this.refreshAccount();
+    }
+
+    componentWillMount = () => {
+        Swal.fire({
+            position: 'center-center',
+            icon: 'success',
+            title: 'Login Success!',
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
 
     refreshAccount = () => {
