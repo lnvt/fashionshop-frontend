@@ -16,7 +16,7 @@ class LeftMenuComponent extends Component {
         {/* Sidebar */}
         <ul ref = "toggle" className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
           {/* Sidebar - Brand */}
-          <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/#">
             <div className="sidebar-brand-icon rotate-n-15">
             </div>
             <div className="sidebar-brand-text mx-3">Daisy House</div>
@@ -33,18 +33,18 @@ class LeftMenuComponent extends Component {
             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div className="bg-white py-2 collapse-inner rounded">
                 <h6 className="collapse-header">Account</h6>
-                <a className="collapse-item" href="login.html">Management</a>
-                <a className="collapse-item" href="register.html">Register</a>
-                <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <a className="collapse-item" href="/#">Management</a>
+                <a className="collapse-item" href="/#">Register</a>
+                <a className="collapse-item" href="/#">Forgot Password</a>
               </div>
             </div>
           </li>
           {/* Sidebar Message */}
         </ul>
         {/* End of Sidebar */}
-        <div className="btn btn-danger btn-leftmenu" 
+        <div className="btn btn-danger btn-leftmenu fixed-bottom" 
                 onClick = {this.handleToggleMenu}>
-            <i className="bi bi-arrow-left-square-fill"></i>
+            <i className="bi bi-list"></i>
           </div>
       </div>
     );

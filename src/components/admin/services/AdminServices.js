@@ -10,6 +10,10 @@ class AdminServices {
     deleteAccountById(id){
         return axios.delete(`${API_URL}/account/delete/${id}`);
     }
+
+    retrieveAccount(id){
+        return axios.get(`${API_URL}/account/${id}`)
+    }
 }
 
 export default new AdminServices();

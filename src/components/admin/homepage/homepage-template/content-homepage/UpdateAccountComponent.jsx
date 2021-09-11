@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import FooterHomepageComponent from '../footer-homepage/FooterHomepageComponent';
-import HeaderHompageComponent from '../header-homepage/HeaderHompageComponent';
-
 class UpdateAccountComponent extends Component {
 
     constructor(props) {
@@ -11,47 +8,59 @@ class UpdateAccountComponent extends Component {
 
         }
     }
-
-    render() {
-        return (
-            <div>
-                <div className="contentPage">
-                    <div id="content-wrapper bg-white" className="d-flex flex-column">
-                        <div id="content">
-                            <HeaderHompageComponent />
-                            <div className="container-fluid">
-                                <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1> Update Account Id - {this.props.match.params.id} </h1>
+    checkStatusFormUpdateAccount = () => {
+        if (this.props.statusShowFormUpdateAccount === true) {
+            return (
+                <form>
+                    <div className="card text-left mt-2">
+                        <div className="card bg-warning">
+                            <div className="card-header text-center">Update</div>
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <input onChange={(event) => this.isChange(event)}
+                                        type="text" name="name" className="form-control" placeholder="ID" readOnly/>
                                 </div>
-                                <div className="row  d-flex justify-content-center">
-                                    {/* <Formik>
-                                        {
-                                            (props) => (
-                                                <Form>
-                                                    <div>
-                                                        <label htmlFor="">Status:</label>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                                                            <label class="form-check-label" for="inlineRadio1">True</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                                            <label class="form-check-label" for="inlineRadio2">False</label>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn btn-success">Success</button>
-                                                    </div>
-                                                </Form>
-                                            )
-                                        }
-                                    </Formik> */}
+                                <div className="form-group">
+                                    <input onChange={(event) => this.isChange(event)}
+                                        type="text" name="tel" className="form-control" placeholder="Username" readOnly/>
+                                </div>
+                                <div className="form-group">
+                                    <input onChange={(event) => this.isChange(event)}
+                                        type="text" name="tel" className="form-control" placeholder="Password" />
+                                </div>
+                                <div className="form-group">
+                                    <input onChange={(event) => this.isChange(event)}
+                                        type="text" name="tel" className="form-control" placeholder="Status" />
+                                </div>
+                                <div className="form-group">
+                                    <input onChange={(event) => this.isChange(event)}
+                                        type="text" name="tel" className="form-control" placeholder="Created_date" />
+                                </div>
+                                <div className="form-group">
+                                    <select onChange={(event) => this.isChange(event)}
+                                        className="custom-select" name="permission" required="permission">
+                                        <option value>Authority</option>
+                                        <option value={1}> Admin </option>
+                                        <option value={2}> Client </option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <input type="button" className="btn btn-block btn-danger"
+                                        value="Create"
+                                        onClick={() => { this.saveButton() }} />
                                 </div>
                             </div>
                         </div>
-                        <FooterHomepageComponent />
                     </div>
-                </div>
+                </form>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <div className="">
+                 {this.checkStatusFormUpdateAccount()}
             </div>
         );
     }

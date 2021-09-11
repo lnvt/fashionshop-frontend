@@ -22,7 +22,6 @@ class LoginComponent extends Component {
     }
 
     loginClicked = (event) => {
-        event.preventDefault()
         if (this.state.username === 'admin' && this.state.password === 'admin') {
             this.props.history.push("/home-page"); 
         }
