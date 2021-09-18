@@ -30,11 +30,7 @@ class ContentHomepageComponent extends Component {
             timer: 1500
         })
     }
-
-    // componentWillMount = () => {
- 
-    // }
-
+    
     refreshAccount = () => {
         AdminServices.retrieveAllAccount()
             .then(response => {

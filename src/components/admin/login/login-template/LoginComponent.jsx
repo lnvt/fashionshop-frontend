@@ -28,7 +28,7 @@ class LoginComponent extends Component {
         else {
             Swal.fire({
                 position: 'top-end',
-                icon: 'error',
+                icon: 'warning',
                 title: 'Error',
                 width: 300,
                 heigth: 50,
