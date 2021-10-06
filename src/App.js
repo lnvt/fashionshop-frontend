@@ -9,6 +9,8 @@ import LogoutComponent from './components/admin/logout/logout-template/LogoutCom
 import HomepageClient from './components/client/homepage/HomepageClientComponent';
 import DetailProductComponent from './components/client/detail-product/DetailProductComponent';
 import UpdateAccountComponent from './components/admin/homepage/homepage-template/content-homepage/UpdateAccountComponent';
+import ContactComponent from './components/client/contact/ContactComponent'
+import OnePageComponent from './components/client/about-onepage/OnePageComponent';
 
 class App extends Component {
 
@@ -26,7 +28,9 @@ class App extends Component {
               <Route path="/log-out" component={LogoutComponent} />
               <Route path="/daisyhouse" component={HomepageClient} />
               <Route path="/account/:id" component={UpdateAccountComponent} />
-              <Route path="/daisyhouse/detail/:id" component={DetailProductComponent} />
+              <Route path="/detail" component={DetailProductComponent} />
+              <Route path="/contact" component={ContactComponent} />
+              <Route path="/about" component={OnePageComponent} />
               <Route component={ErrorPageComponent} />
             </Switch>
           </>

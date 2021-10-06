@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FooterHomepageComponent from '../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../header-homepage/HeaderHompageComponent';
 import './ContentHomepageStyle.css';
-import AdminServices from '../../../services/AdminServices';
+// import AdminServices from '../../../services/AdminServices';
 import Swal from 'sweetalert2';
 import AddAccountComponent from './AddAccountComponent';
 import UpdateAccountComponent from './UpdateAccountComponent';
@@ -31,23 +31,23 @@ class ContentHomepageComponent extends Component {
         })
     }
     
-    refreshAccount = () => {
-        AdminServices.retrieveAllAccount()
-            .then(response => {
-                this.setState({
-                    accounts: response.data
-                });
-            })
-    }
+    // refreshAccount = () => {
+    //     AdminServices.retrieveAllAccount()
+    //         .then(response => {
+    //             this.setState({
+    //                 accounts: response.data
+    //             });
+    //         })
+    // }
 
-    deleteAccountClicked = (id) => {
-        AdminServices.deleteAccountById(id)
-            .then(
-                response => {
-                    this.setState({ message: `Deleted ${id} successfull!` });
-                    this.refreshAccount();
-                })
-    }
+    // deleteAccountClicked = (id) => {
+    //     AdminServices.deleteAccountById(id)
+    //         .then(
+    //             response => {
+    //                 this.setState({ message: `Deleted ${id} successfull!` });
+    //                 this.refreshAccount();
+    //             })
+    // }
 
     updateAccountClicked = (id) => {
         console.log("Id update: " + id);
