@@ -4,7 +4,7 @@ import FooterComponent from '../footer/FooterComponent';
 import MenuHeaderBottomComponent from '../menu-header-bottom/MenuHeaderBottomComponent';
 import MenuHeaderTopComponent from '../menu-header-top/MenuHeaderTopComponent';
 import MenuRightComponent from '../menu-right/MenuRightComponent';
-import MenuLeftComponent from '../menuleft/MenuLeftComponent';
+import MenuLeftComponent from '../menu-left/MenuLeftComponent';
 import './HomepageClientComponent';
 
 class HomepageClient extends Component {

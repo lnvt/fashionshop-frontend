@@ -42,7 +42,11 @@ class ContactComponent extends Component {
                             <div className="contact_info">
                                 <h3>Find Us Here</h3>
                                 <div className="map">
-                                    <iframe width="100%" height={175} frameBorder={0} scrolling="no" marginHeight={0} marginWidth={0} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.365133826851!2d106.69243501428757!3d10.859808160619853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529c17978287d%3A0xec48f5a17b7d5741!2zTmd1eeG7hW4gVOG6pXQgVGjDoG5oIFVuaXZlcnNpdHk!5e0!3m2!1sen!2s!4v1633406293900!5m2!1sen!2s" style={{ color: '#666', textAlign: 'left', fontSize: '12px' }} />
+                                    <iframe 
+                                        width="100%" height={175} frameBorder={0} scrolling="no" marginHeight={0} marginWidth={0} 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.365133826851!2d106.69243501428757!3d10.859808160619853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529c17978287d%3A0xec48f5a17b7d5741!2zTmd1eeG7hW4gVOG6pXQgVGjDoG5oIFVuaXZlcnNpdHk!5e0!3m2!1sen!2s!4v1633406293900!5m2!1sen!2s" 
+                                        style={{ color: '#666', textAlign: 'left', fontSize: '12px' }} 
+                                        title="Shop Address"/>
                                 </div>
                             </div>
                             <div className="company_address">

@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import FooterHomepageComponent from '../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../header-homepage/HeaderHompageComponent';
 import './ContentHomepageStyle.css';
-// import AdminServices from '../../../services/AdminServices';
 import Swal from 'sweetalert2';
 import AddAccountComponent from './AddAccountComponent';
 import UpdateAccountComponent from './UpdateAccountComponent';
+import AccountService from '../../../../services/AccountService';
+import CartService from '../../../../services/CartService';
+import CodeSaleService from '../../../../services/CodeSaleService';
+import CommentService from '../../../../services/CommentService';
+import ImageService from '../../../../services/ImageService';
+import ListProductService from '../../../../services/ListProductService';
+import MenuService from '../../../../services/MenuService';
+import PaymentService from '../../../../services/PaymentService';
+import PostService from '../../../../services/PostService';
+import ProductService from '../../../../services/ProductService';
+import RoleAccountService from '../../../../services/RoleAccountService';
+import SlideShowService from '../../../../services/SlideShowService';
+
+
 
 class ContentHomepageComponent extends Component {
 
@@ -21,7 +34,21 @@ class ContentHomepageComponent extends Component {
     }
 
     componentDidMount = () => {
-        this.refreshAccount();
+
+        // Services 
+        this.retrieveAllAccount();
+        this.retrieveAllCart();
+        this.retrieveAllCodeSale();
+        this.retrieveAllComment();
+        this.retrieveAllImageService();
+        this.retrieveAllListProduct();
+        this.retrieveAllMenu();
+        this.retrieveAllPayment();
+        this.retrieveAllPost();
+        this.retrieveAllProduct();
+        this.retrieveAllRoleAccount();
+        this.retrieveAllSlideShow();
+
         Swal.fire({
             position: 'center-center',
             icon: 'success',
@@ -31,30 +58,80 @@ class ContentHomepageComponent extends Component {
         })
     }
     
-    // refreshAccount = () => {
-    //     AdminServices.retrieveAllAccount()
-    //         .then(response => {
-    //             this.setState({
-    //                 accounts: response.data
-    //             });
-    //         })
-    // }
-
-    // deleteAccountClicked = (id) => {
-    //     AdminServices.deleteAccountById(id)
-    //         .then(
-    //             response => {
-    //                 this.setState({ message: `Deleted ${id} successfull!` });
-    //                 this.refreshAccount();
-    //             })
-    // }
-
-    updateAccountClicked = (id) => {
-        console.log("Id update: " + id);
-        this.setState({
-            showFormUpdateAccount : !this.state.showFormUpdateAccount,
+    retrieveAllAccount = () => {
+        AccountService.retrieveAllAccountService()
+        .then(response => {
+            console.log(response)
         })
     }
+
+    retrieveAllCart = () => {
+        CartService.retrieveAllCartService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllCodeSale = () => {
+        CodeSaleService.retrieveAllCodeSaleService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllComment = () => {
+        CommentService.retrieveAllCommentService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllImageService = () => {
+        ImageService.retrieveAllImageService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllListProduct = () => {
+        ListProductService.retrieveAllListProductService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllMenu = () => {
+        MenuService.retrieveAllMenuService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllPayment = () => {
+        PaymentService.retrieveAllPaymentService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllPost = () => {
+        PostService.retrieveAllPostService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllProduct = () => {
+        ProductService.retrieveAllProductService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllRoleAccount = () => {
+        RoleAccountService.retrieveAllRoleAccountService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+    retrieveAllSlideShow = () => {
+        SlideShowService.retrieveAllSlideShowService()
+        .then(response => {
+            console.log(response)
+        })
+    }
+
 
     mappingDataAccount = () => this.state.accounts.map((item, key) => (
         <tr key={item.id}>
@@ -79,22 +156,6 @@ class ContentHomepageComponent extends Component {
         this.setState({
             showFormAddAccount : !this.state.showFormAddAccount
         })
-    }
-
-    getNewAccountData = (id, username, password, status, created_date) => {
-        var item = {};
-        item.id = id;
-        item.username = username;
-        item.password = password;
-        item.status = status;
-        item.created_date = created_date;
-
-        var items = this.state.accounts;
-        items.push(item);
-        this.setState({
-            accounts: items
-        });
-        console.log(item)
     }
 
     render() {
