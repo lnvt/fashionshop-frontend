@@ -7,6 +7,10 @@ class AccountService {
     retrieveAllAccountService(){
         return axios.get(`${url}/account`);
     }
+
+    deleteAccountService(id){
+        return axios.delete(`${url}/account/${id}`);
+    }
 }
 
 export default new AccountService()

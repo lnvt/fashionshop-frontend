@@ -9,8 +9,8 @@ class LoginComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
-            password: "",
+            username: "admin",
+            password: "admin",
         }
     }
 
@@ -22,6 +22,7 @@ class LoginComponent extends Component {
     }
 
     loginClicked = (event) => {
+
         if (this.state.username === 'admin' && this.state.password === 'admin') {
             this.props.history.push("/home-page"); 
         }
@@ -37,6 +38,7 @@ class LoginComponent extends Component {
                 timer: 2000
               })
         }
+
     }
     render() {
         return (
