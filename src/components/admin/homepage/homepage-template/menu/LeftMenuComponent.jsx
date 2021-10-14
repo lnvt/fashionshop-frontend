@@ -21,11 +21,11 @@ class LeftMenuComponent extends Component {
           <hr className="sidebar-divider my-0" />
           <div className="menuleft">
             <ul>
-              <li> <a href="/#" className="badge badge-info">Account</a> </li>
-              <li> <a href="/#" className="badge badge-info">Cart</a> </li>
-              <li> <a href="/#" className="badge badge-info">CodeSale</a> </li>
-              <li> <a href="/#" className="badge badge-info">Product</a> </li>
-              <li> <a href="/#" className="badge badge-info">Post</a> </li>
+              <a className="btn btn-danger btn-lg btn-block mt-2" href="/#" role="button">Account</a>
+              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Cart</a>
+              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Code sale</a>
+              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Product</a>
+              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Post</a>
             </ul>
           </div>
         </ul>

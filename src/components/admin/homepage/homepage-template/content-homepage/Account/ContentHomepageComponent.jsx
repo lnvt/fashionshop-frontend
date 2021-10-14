@@ -4,6 +4,7 @@ import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent
 import './ContentHomepageStyle.css';
 import Swal from 'sweetalert2';
 import AccountService from '../../../../../services/AccountService';
+import { Link } from 'react-router-dom';
 // import CartService from '../../../../services/CartService';
 // import CodeSaleService from '../../../../services/CodeSaleService';
 // import CommentService from '../../../../services/CommentService';
@@ -71,9 +72,6 @@ class ContentHomepageComponent extends Component {
             })
     }
 
-    updateAccountClicked = (id) =>   {
-        console.log(id);
-    }
     // retrieveAllCart = () => {
     //     CartService.retrieveAllCartService()
     //     .then(response => {
@@ -141,7 +139,7 @@ class ContentHomepageComponent extends Component {
     //     })
     // }
 
-    mappingDataAccount = () => this.state.accounts.map((item, key) => (
+    mappingDataAllAccounts = () => this.state.accounts.map((item, key) => (
         <tr key={item.accountId}>
             <th scope="row">{item.accountId}</th>
             <td>{item.username}</td>
@@ -149,20 +147,17 @@ class ContentHomepageComponent extends Component {
             <td>{item.status.toString()}</td>
             <td>{item.createdDate}</td>
             <td>
-                <button className="btn btn-warning"
-                    onClick={() => this.updateAccountClicked(item.accountId)}> Update </button>
+                <Link to={{
+                    pathname: `/account/${item.accountId}`
+                }}>
+                <button className="btn btn-warning"> Update </button>
+                </Link>
                 &nbsp;
                 <button className="btn btn-danger"
                     onClick={() => this.deleteAccountClicked(item.accountId)}> Delete </button>
             </td>
         </tr>
     ))
-
-    changeStatusForm = () => {
-        this.setState({
-            showFormAddAccount: !this.state.showFormAddAccount
-        })
-    }
 
     render() {
         return (
@@ -188,16 +183,17 @@ class ContentHomepageComponent extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {this.mappingDataAccount()}
+                                            {this.mappingDataAllAccounts()}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <div className="btn btn-info mb-2"
-                                    onClick={this.changeStatusForm}>
-                                    Create Account
-                                </div>
+                        <div className="btn btn-info mb-2">
+                            <Link to={{
+                                pathname: `/account/create`
+                            }}> Create Account </Link>
+                        </div>
                     </div>
                     <FooterHomepageComponent />
                 </div>

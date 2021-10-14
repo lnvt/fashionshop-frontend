@@ -8,6 +8,8 @@ import HomepageClient from '../client/homepage/HomepageClientComponent';
 import DetailProductComponent from '../client/detail-product/DetailProductComponent';
 import ContactComponent from '../client/contact/ContactComponent';
 import OnePageComponent from '../client/about-onepage/OnePageComponent';
+import UpdateAccountComponent from '../admin/homepage/homepage-template/content-homepage/Account/UpdateAccountComponent';
+import CreateAccountComponent from '../admin/homepage/homepage-template/content-homepage/Account/CreateAccountComponent';
 
 class RouterURL extends Component {
   render() {
@@ -16,13 +18,15 @@ class RouterURL extends Component {
         <Router>
           <>
             <Switch>
+              <Route path="/account/new" component={CreateAccountComponent} />
               <Route path="/" exact component={LoginComponent} />
               <Route path="/login" component={LoginComponent} />
               <Route path="/home-page" component={HomepageComponent} />
               <Route path="/information/:name" component={HomepageComponent} />
               <Route path="/log-out" component={LogoutComponent} />
               <Route path="/daisyhouse" component={HomepageClient} />
-              <Route path="/detail" component={DetailProductComponent} />
+              <Route path="/account/:id" component={UpdateAccountComponent} />
+              <Route path="/detail/:id" component={DetailProductComponent} />
               <Route path="/contact" component={ContactComponent} />
               <Route path="/about" component={OnePageComponent} />
               <Route component={ErrorPageComponent} />

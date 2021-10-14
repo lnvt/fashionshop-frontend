@@ -22,13 +22,13 @@ class MenuHeaderTopComponent extends Component {
                                 <a href="/#">
                                     Notification
                                 </a> &nbsp;
-                                <i class="bi bi-bell"></i>
+                                <i className="bi bi-bell"></i>
                             </li>
                             <li className="nav-item">
                                 <a href="/#">
                                     Support
                                 </a> &nbsp;
-                                <i class="bi bi-question-octagon"></i>
+                                <i className="bi bi-question-octagon"></i>
                             </li>
                             <li className="nav-item"><a href="/#">Sign in</a></li>
                             <li className="nav-item"><a href="/#">Sign up</a></li>
