@@ -38,7 +38,7 @@ class MenuHeaderTopComponent extends Component {
                 </div>
                 <div className="header_top" style={{ backgroundColor: "#e7879a" }}>
                     <div className="header_item header_top_1">
-                        <p>DAISY HOUSE</p>
+                        <p><a href="/daisyhouse" className = "badge homepage">DAISY HOUSE</a></p>
                     </div>
                     <div className="header_item header_top_2">
                         <div className="input-group mb-3">

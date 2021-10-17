@@ -65,3 +65,7 @@ p {
     color: aqua;
     transition: 1s;
 }
+
+.homepage{
+    text-decoration: none;
+}

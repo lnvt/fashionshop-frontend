@@ -58,7 +58,7 @@ class RouterURL extends Component {
               <Route path="/log-out" component={LogoutComponent} />
 
               {/* Client */}
-              <Route path="/listproduct" component={ListProductComponent} />
+              <Route path="/listproduct/:id" component={ListProductComponent} />
               <Route path="/" exact component={LoginComponent} />
               <Route path="/information/:name" component={HomepageComponent} />
               <Route path="/daisyhouse" component={HomepageClient} />
