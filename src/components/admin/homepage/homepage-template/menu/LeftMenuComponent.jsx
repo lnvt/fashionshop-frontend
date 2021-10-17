@@ -21,16 +21,17 @@ class LeftMenuComponent extends Component {
           <hr className="sidebar-divider my-0" />
           <div className="menuleft">
             <ul>
-              <a className="btn btn-danger btn-lg btn-block mt-2" href="/#" role="button">Account</a>
-              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Cart</a>
-              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Code sale</a>
-              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Product</a>
-              <a className="btn btn-danger btn-lg btn-block" href="/#" role="button">Post</a>
+              <a className="btn btn-danger btn-block mt-2" href="/home-page" role="button">Account</a>
+              <a className="btn btn-danger btn-block" href="/cart" role="button">Cart</a>
+              <a className="btn btn-danger btn-block" href="/codesale" role="button">Code sale</a>
+              <a className="btn btn-danger btn-block" href="/product" role="button">Product</a>
+              <a className="btn btn-danger btn-block" href="/post" role="button">Post</a>
             </ul>
           </div>
         </ul>
         <div className="btn btn-danger btn-leftmenu fixed-bottom"
-          onClick={this.handleToggleMenu}>
+          onClick={this.handleToggleMenu}
+          style = {{width:50}}>
           <i className="bi bi-list"></i>
         </div>
       </div>

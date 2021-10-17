@@ -7,6 +7,14 @@ class ProductService {
     retrieveAllProductService(){
         return axios.get(`${url}/product`);
     }
+
+    retrieveProductService(id){
+        return axios.get(`${url}/product/${id}`);
+    }
+
+    retrieveProductDetailService(id){
+        return axios.get(`${url}/detail/${id}`);
+    }
 }
 
 export default new ProductService()

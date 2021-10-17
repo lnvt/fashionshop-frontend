@@ -1,9 +1,63 @@
 import React, { Component } from 'react';
 import MenuHeaderTopComponent from '../menu-header-top/MenuHeaderTopComponent';
 import FooterComponent from '../footer/FooterComponent';
+import ProductService from '../../services/ProductService';
+import ListProductService from '../../services/ListProductService';
 
 class DetailProductComponent extends Component {
+
+
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            product: {},
+            listProduct:[],
+        }
+    }
+
+
+    componentDidMount() {
+        this.retrieveAllProduct();
+        this.retrieveAllListProduct();
+        
+    }
+
+    retrieveAllProduct = (id) => {
+        ProductService.retrieveProductDetailService(this.props.match.params.id)
+            .then(response => {
+                this.setState({
+                    product: response.data
+                })
+            })
+    }
+
+    retrieveAllListProduct() {
+        ListProductService.retrieveAllListProductService()
+            .then(response =>{
+                this.setState({
+                    listProduct: response.data
+                })
+            })
+    }
+
+    mappingAllListProduct = () => this.state.listProduct.map((item,key) => (
+        <a href= "#">
+            {item.listProductName}    
+        </a>
+    ))
+
+    mappingWebListProduct = () => this.state.listProduct.map((item, key) => {
+        if(this.state.product.fkListProduct === item.listProductId) {
+            return (
+                <div> <a href = "/#"> Home </a> - <a href = "/#"> {item.listProductName} </a> </div>
+            )
+        }
+    })    
+        
     render() {
+        console.log(this.state.product)
+        console.log(this.state.listProduct)
         return (
             <div>
                 <div className="">
@@ -12,7 +66,7 @@ class DetailProductComponent extends Component {
                     </div>
                     <div className="content_top mx-auto">
                         <div className="back-links ">
-                            <a href="/daisyhouse">Home</a> &gt;&gt;&gt;&gt; <a href="/#">Detail Product</a>
+                           {this.mappingWebListProduct()}
                         </div>
                         <div className="clear" />
                     </div>
@@ -26,18 +80,14 @@ class DetailProductComponent extends Component {
                                                 <div className="slides_container">
                                                     <a href="/#"><img src="images/productslide-1.jpg" alt=" " /></a>
                                                 </div>
-                                                <ul className="pagination">
-                                                    <li><a href="/#"><img src="images/thumbnailslide-1.jpg" alt=" " /></a></li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="desc span_3_of_2">
-                                    <h2>NAME PRODUCT</h2>
-                                    <p> DESCRIPTION PRODUCT</p>
+                                    <h2>{this.state.product.productName}</h2>
                                     <div className="price">
-                                        <p>Price: <span>0.00 VNĐ</span></p>
+                                        <p>Price: <span>{this.state.product.productCost} VNĐ</span></p>
                                     </div>
                                 </div>
                                 <div className="clear" />
@@ -46,7 +96,8 @@ class DetailProductComponent extends Component {
                                 <div id="horizontalTab">
                                     <div className="resp-tabs-container">
                                         <div className="product-desc">
-                                            <p> Mô tả sản phẩm</p>
+                                            <p> Product Description</p>
+                                            {this.state.product.productDescription}
                                         </div>
                                     </div>
                                 </div>
@@ -70,17 +121,17 @@ class DetailProductComponent extends Component {
                                         <div className="clear" />
                                     </div>
                                 </div>
-                             </div>
+                            </div>
                         </div>
                         <div className="rightsidebar span_3_of_1">
                             <h2>CATEGORIES</h2>
                             <ul className="side-w3ls">
-                                <li><a href="/#">Mobile Phones</a></li>
+                                {this.mappingAllListProduct()}
                             </ul>
                         </div>
                     </div>
                     <div className="footer">
-                        <FooterComponent/>
+                        <FooterComponent />
                     </div>
                 </div>
             </div>

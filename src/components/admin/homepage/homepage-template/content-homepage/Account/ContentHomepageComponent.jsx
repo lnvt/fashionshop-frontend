@@ -5,6 +5,7 @@ import './ContentHomepageStyle.css';
 import Swal from 'sweetalert2';
 import AccountService from '../../../../../services/AccountService';
 import { Link } from 'react-router-dom';
+import SearchComponent from '../../header-homepage/SearchComponent';
 // import CartService from '../../../../services/CartService';
 // import CodeSaleService from '../../../../services/CodeSaleService';
 // import CommentService from '../../../../services/CommentService';
@@ -65,11 +66,29 @@ class ContentHomepageComponent extends Component {
             })
     }
 
-    deleteAccountClicked = (id) => {
-        AccountService.deleteAccountService(id)
-            .then(response => {
-                   this.retrieveAllAccount();
-            })
+    deleteAccountClicked = (id, username) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Do you want delete ${username} ?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes.'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Account has been deleted.',
+                    'success'
+                )
+                AccountService.deleteAccountService(id)
+                    .then(response => {
+                        this.retrieveAllAccount();
+                    })
+            }
+        })
+
     }
 
     // retrieveAllCart = () => {
@@ -150,11 +169,11 @@ class ContentHomepageComponent extends Component {
                 <Link to={{
                     pathname: `/account/${item.accountId}`
                 }}>
-                <button className="btn btn-warning"> Update </button>
+                    <button className="btn btn-warning" style={{ width: 100 }}> Update </button>
                 </Link>
                 &nbsp;
                 <button className="btn btn-danger"
-                    onClick={() => this.deleteAccountClicked(item.accountId)}> Delete </button>
+                    onClick={() => this.deleteAccountClicked(item.accountId, item.username)} style={{ width: 100 }}> Delete </button>
             </td>
         </tr>
     ))
@@ -167,7 +186,17 @@ class ContentHomepageComponent extends Component {
                         <HeaderHompageComponent />
                         <div className="container-fluid">
                             <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1>Account Administration</h1>
+                                <h1 className="mx-auto">Account Administration</h1>
+                            </div>
+                            <div className="container">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <a className="btn mt-2 btn-outline-info" href="/create/account" role="button">Create Account</a>
+                                    </div>
+                                    <div class="col">
+                                        <SearchComponent />
+                                    </div>
+                                </div>
                             </div>
                             <div className="d-flex bd-highlight">
                                 <div className="p-2 w-100 bd-highlight">
@@ -188,11 +217,6 @@ class ContentHomepageComponent extends Component {
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                        <div className="btn btn-info mb-2">
-                            <Link to={{
-                                pathname: `/account/create`
-                            }}> Create Account </Link>
                         </div>
                     </div>
                     <FooterHomepageComponent />

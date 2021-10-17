@@ -13,8 +13,8 @@ class MenuHeaderTopComponent extends Component {
                             <li className="nav-item"><a href="/#">Download</a></li>
                             <li className="nav-item">
                                 Connect &nbsp;
-                                <button className="btn btn-info bi bi-facebook" href="/#"></button> &nbsp;
-                                <button className="btn btn-danger bi bi-google" href="/#"></button>
+                                <button className="btn btn-info bi bi-facebook" style = {{width:50}} href="/#"></button> &nbsp;
+                                <button className="btn btn-danger bi bi-google" style = {{width:50}} href="/#"></button>
                             </li>
                         </ul>
                         <ul className="nav-list nav-right">
@@ -44,12 +44,12 @@ class MenuHeaderTopComponent extends Component {
                         <div className="input-group mb-3">
                             <input type="text" className="form-control" placeholder="Search items" aria-label="Search items" aria-describedby="basic-addon2" />
                             <div className="input-group-append">
-                                <button className="btn btn-danger bi bi-search" type="button"></button>
+                                <button className="btn btn-danger bi bi-search" style = {{width:50}} type="button"></button>
                             </div>
                         </div>
                     </div>
                     <div className="header_item header_top_3">
-                        <button className="btn btn-warning bi bi-cart3"></button>
+                        <button className="btn btn-warning bi bi-cart3" style = {{width:50}} ></button>
                     </div>
                     <div className="clear" />
                 </div>

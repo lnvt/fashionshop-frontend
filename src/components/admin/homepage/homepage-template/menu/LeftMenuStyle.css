@@ -1,9 +1,12 @@
 .btn-leftmenu {
-    width: 50px;
     bottom: 0;
     position: absolute;
 }
 
 .menuleft {
    margin-left: -30px;
+}
+
+.btn {
+    width: 150px;
 }

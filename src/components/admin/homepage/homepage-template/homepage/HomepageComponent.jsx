@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ContentHomepageComponent from '../content-homepage/Account/ContentHomepageComponent';
+import ContentHomepageComponent from '../content-homepage/account/ContentHomepageComponent';
 import LeftMenuComponent from '../menu/LeftMenuComponent';
 
 class HomepageComponent extends Component {

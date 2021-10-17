@@ -73,6 +73,10 @@ class CreateAccountComponent extends Component {
                     onClick={this.updateAccount()}>
                     Save
                 </button>
+                <a className="btn btn-danger btn-block bi bi-skip-forward-btn-fill fixed-bottom" 
+                    href="/home-page" role="button"
+                    style ={{width:50}}
+                > </a>
             </form>
 
         </div>
@@ -93,6 +97,7 @@ class CreateAccountComponent extends Component {
                                     {this.mappingDataAccount()}
                                 </div>
                             </div>
+                            
                         </div>
                         <FooterHomepageComponent />
                     </div>
