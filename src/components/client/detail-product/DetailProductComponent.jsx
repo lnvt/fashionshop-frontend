@@ -3,24 +3,33 @@ import MenuHeaderTopComponent from '../menu-header-top/MenuHeaderTopComponent';
 import FooterComponent from '../footer/FooterComponent';
 import ProductService from '../../services/ProductService';
 import ListProductService from '../../services/ListProductService';
-
+import ImageService from '../../services/ImageService';
 class DetailProductComponent extends Component {
-
-
 
     constructor(props) {
         super(props)
         this.state = {
             product: {},
             listProduct:[],
+            imageProduct:{}
         }
     }
-
 
     componentDidMount() {
         this.retrieveAllProduct();
         this.retrieveAllListProduct();
-        
+        this.retrieveAllImage();
+    }
+
+    
+    retrieveAllImage = () => {
+        ImageService.retrieveImageService(this.props.match.params.id)
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    imageProducts: response.data
+                })
+            }) 
     }
 
     retrieveAllProduct = (id) => {
@@ -56,8 +65,7 @@ class DetailProductComponent extends Component {
     })    
         
     render() {
-        console.log(this.state.product)
-        console.log(this.state.listProduct)
+        console.log(this.state.imageProduct)
         return (
             <div>
                 <div className="">
@@ -78,7 +86,7 @@ class DetailProductComponent extends Component {
                                         <div id="products_example">
                                             <div id="products">
                                                 <div className="slides_container">
-                                                    <a href="/#"><img src="images/productslide-1.jpg" alt=" " /></a>
+                                                    <a href="/#"><img src="" alt=" " /></a>
                                                 </div>
                                             </div>
                                         </div>

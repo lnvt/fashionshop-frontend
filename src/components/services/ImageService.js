@@ -7,6 +7,10 @@ class ImageService {
     retrieveAllImageService(){
         return axios.get(`${url}/image`);
     }
+
+    retrieveImageService(id){
+        return axios.get(`${url}/image/${id}`);
+    }
 }
 
 export default new ImageService()

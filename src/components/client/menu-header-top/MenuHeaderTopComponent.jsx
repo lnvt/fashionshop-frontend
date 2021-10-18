@@ -25,8 +25,8 @@ class MenuHeaderTopComponent extends Component {
                                 <i className="bi bi-bell"></i>
                             </li>
                             <li className="nav-item">
-                                <a href="/#">
-                                    Support
+                                <a href="/about">
+                                    About
                                 </a> &nbsp;
                                 <i className="bi bi-question-octagon"></i>
                             </li>

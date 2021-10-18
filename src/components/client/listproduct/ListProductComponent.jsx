@@ -4,6 +4,7 @@ import MenuHeaderBottomComponent from '../menu-header-bottom/MenuHeaderBottomCom
 import FooterComponent from '../footer/FooterComponent';
 import ProductService from '../../services/ProductService';
 import ListProductService from '../../services/ListProductService';
+import ImageService from '../../services/ImageService';
 import { Link } from 'react-router-dom';
 import './ListProductStyle.css';
 
@@ -14,12 +15,14 @@ class ListProductComponent extends Component {
         this.state = {
             products: [],
             listProduct: {},
+            imageProducts: [],
         }
     }
 
     componentDidMount() {
         this.retrieveAllListProduct();
         this.retrieveAllProduct();
+        this.retrieveAllImage();
     }
 
     retrieveAllListProduct() {
@@ -40,32 +43,43 @@ class ListProductComponent extends Component {
             })
     }
 
-    mappingProductFollowList = () => this.state.products.map((item, key) => {
-        if (parseInt(this.props.match.params.id) === item.fkListProduct) {
-            return (
-                    <div className="grid_1_of_4 images_1_of_4 listgrid">
-                        <a href="preview.html">
-                            <Link to ={{
-                                pathname: `/detail/${item.productId}`
-                            }}>
-                                <img src="" alt="" />
-                            </Link>
-                        </a>
-                        <h2> </h2>
-                        <div className="price-details">
-                            <div className="price-number">
-                                <p><span className="rupees">{item.productName}</span></p>
-                            </div>
-                            <div className="add-cart">
-                                <h4><a href="detail/{item}">Add to Cart</a></h4>
-                            </div>
-                            <div className="clear" />
-                        </div>
-                    </div>
-            )
-        }
-    })
+    retrieveAllImage = () => {
+        ImageService.retrieveAllImageService()
+            .then(response => {
+                this.setState({
+                    imageProducts: response.data
+                })
+            }) 
+    }
 
+    mappingProductFollowList = () => this.state.products.map((itemProduct, keyProduct) => {
+
+            if (parseInt(this.props.match.params.id) === itemProduct.fkListProduct){
+                return (
+                        <div className="grid_1_of_4 images_1_of_4 listgrid">
+                            <a href="preview.html">
+                                <Link to ={{
+                                    pathname: `/detail/${itemProduct.productId}`
+                                }}>
+                                    <img src={require(`../../imgs_product/SHOES/shoes_1.png`).default} 
+                                        width={30} height={30} alt="" />
+                                </Link>
+                            </a>
+                            <h2> </h2>
+                            <div className="price-details">
+                                <div className="price-number">
+                                    <p><span className="rupees">{itemProduct.productName}</span></p>
+                                    <p><span className="rupees">{itemProduct.productCost} VND</span></p>
+                                </div>
+                                <div className="add-cart">
+                                    <h4><a href="detail/{item}">Add to Cart</a></h4>
+                                </div>
+                                <div className="clear" />
+                            </div>
+                        </div>
+                )
+            }
+        })
     render() {
         return (
 

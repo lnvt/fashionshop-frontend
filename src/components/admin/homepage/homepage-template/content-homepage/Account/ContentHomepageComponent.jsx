@@ -6,17 +6,6 @@ import Swal from 'sweetalert2';
 import AccountService from '../../../../../services/AccountService';
 import { Link } from 'react-router-dom';
 import SearchComponent from '../../header-homepage/SearchComponent';
-// import CartService from '../../../../services/CartService';
-// import CodeSaleService from '../../../../services/CodeSaleService';
-// import CommentService from '../../../../services/CommentService';
-// import ImageService from '../../../../services/ImageService';
-// import ListProductService from '../../../../services/ListProductService';
-// import MenuService from '../../../../services/MenuService';
-// import PaymentService from '../../../../services/PaymentService';
-// import PostService from '../../../../services/PostService';
-// import ProductService from '../../../../services/ProductService';
-// import RoleAccountService from '../../../../services/RoleAccountService';
-// import SlideShowService from '../../../../services/SlideShowService';
 
 
 class ContentHomepageComponent extends Component {
@@ -36,17 +25,6 @@ class ContentHomepageComponent extends Component {
 
         // Services 
         this.retrieveAllAccount();
-        // this.retrieveAllCart();
-        // this.retrieveAllCodeSale();
-        // this.retrieveAllComment();
-        // this.retrieveAllImageService();
-        // this.retrieveAllListProduct();
-        // this.retrieveAllMenu();
-        // this.retrieveAllPayment();
-        // this.retrieveAllPost();
-        // this.retrieveAllProduct();
-        // this.retrieveAllRoleAccount();
-        // this.retrieveAllSlideShow();
 
         Swal.fire({
             position: 'center-center',
@@ -91,74 +69,7 @@ class ContentHomepageComponent extends Component {
 
     }
 
-    // retrieveAllCart = () => {
-    //     CartService.retrieveAllCartService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllCodeSale = () => {
-    //     CodeSaleService.retrieveAllCodeSaleService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllComment = () => {
-    //     CommentService.retrieveAllCommentService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllImageService = () => {
-    //     ImageService.retrieveAllImageService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllListProduct = () => {
-    //     ListProductService.retrieveAllListProductService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllMenu = () => {
-    //     MenuService.retrieveAllMenuService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllPayment = () => {
-    //     PaymentService.retrieveAllPaymentService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllPost = () => {
-    //     PostService.retrieveAllPostService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllProduct = () => {
-    //     ProductService.retrieveAllProductService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllRoleAccount = () => {
-    //     RoleAccountService.retrieveAllRoleAccountService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-    // retrieveAllSlideShow = () => {
-    //     SlideShowService.retrieveAllSlideShowService()
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    // }
-
-    mappingDataAllAccounts = () => this.state.accounts.map((item, key) => (
+    mappingDataAllAccounts = () => this.state.accounts.map((item, key) =>  (
         <tr key={item.accountId}>
             <th scope="row">{item.accountId}</th>
             <td>{item.username}</td>

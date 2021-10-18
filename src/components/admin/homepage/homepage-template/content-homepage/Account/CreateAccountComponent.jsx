@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FooterHomepageComponent from '../../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent';
 import RoleAccountService from '../../../../../services/RoleAccountService';
-
+import moment from 'moment';
 
 class CreateAccountComponent extends Component {
 
@@ -12,6 +12,7 @@ class CreateAccountComponent extends Component {
         this.state = {
             acccount: {},
             roleAccounts: [],
+            dateNow: moment(new Date()).format('YYYY-MM-DD'),
         }
     }
 
@@ -47,7 +48,7 @@ class CreateAccountComponent extends Component {
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Created date:</label>
-                    <input type="date" className="form-control" />
+                    <input type="date" className="form-control" value={this.state.dateNow}/>
                 </div>
                 <div class="form-check">
                     <span>Status account:</span> <br />

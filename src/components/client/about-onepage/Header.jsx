@@ -5,8 +5,6 @@ function Header(props) {
     return (
         <div id ="main">
             <Navbar/>
-
-            
         </div>
     );
 }

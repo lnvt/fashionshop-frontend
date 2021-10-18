@@ -4,14 +4,21 @@ import AccountService from '../../../../../services/AccountService';
 import RoleAccountService from '../../../../../services/RoleAccountService';
 import FooterHomepageComponent from '../../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent';
+import moment from 'moment';
 
 class UpdateAccountComponent extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            acccount: {},
             roleAccounts: [],
+            account: {},
+            accountId: 0,
+            username: "abc",   
+            password: "",
+            status: false,
+            createdDate: moment(new Date()).format('YYYY-MM-DD'),
+            fkRoleAccount: 0,
         }
     }
 
@@ -21,11 +28,11 @@ class UpdateAccountComponent extends Component {
         this.retrieveAllRoleAccount();
     }
 
-    retrieveAccount = (id) => {
+    retrieveAccount = () => {
         AccountService.retrieveAccountService(this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    acccount: response.data
+                    account: response.data
                 })
             })
     }
@@ -36,24 +43,24 @@ class UpdateAccountComponent extends Component {
                 this.setState({
                     roleAccounts: response.data
                 })
-
             })
     }
     mappingDataAllAccounts = () => this.state.roleAccounts.map((item, key) => (
         <option value={item.roleId}> {item.roleName} </option>
     ))
-
+    
     onUpdateSubmit(values) {
         console.log(values);
     }
 
+
     render() {
-        let accountId = this.state.acccount.accountId;
-        let username = this.state.acccount.username;
-        let password = this.state.acccount.password;
-        let createdDate = this.state.acccount.createdDate;
-        let status = this.state.acccount.status;
-        let roleAccount = this.state.acccount.roleAccount;
+        let accountId = this.state.account.accountId;
+        let username = this.state.account.username;
+        let password = this.state.account.password;
+        let createdDate = this.state.account.createdDate;
+        let status = this.state.account.status;
+        let fkRoleAccount = this.state.account.fkRoleAccount;
         return (
             <div>
                 <div className="contentPage">
@@ -67,7 +74,7 @@ class UpdateAccountComponent extends Component {
                                 <div className="form-update-account">
                                     <Formik
                                         initialValues={{
-                                          accountId, username, password, createdDate, status, roleAccount
+                                          accountId, username, password, createdDate, status, fkRoleAccount
                                         }}
                                         onSubmit={this.onUpdateSubmit} 
                                     >
@@ -76,29 +83,29 @@ class UpdateAccountComponent extends Component {
                                                 <Form>
                                                     <div className="form-group">
                                                         <label htmlFor="exampleFormControlInput1">ID:</label>
-                                                        <input className="form-control" type="text" placeholder={this.state.acccount.accountId} disabled
+                                                        <input className="form-control" type="text" placeholder={this.state.account.accountId} disabled
                                                             name="accountId" />
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="exampleFormControlInput1">User name:</label>
-                                                        <input type="text" className="form-control" placeholder={this.state.acccount.username} disabled
+                                                        <input type="text" className="form-control" placeholder={this.state.account.username} disabled
                                                             name="username" />
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="exampleFormControlInput1">Password:</label>
-                                                        <input type="text" className="form-control" placeholder={this.state.acccount.password}
-                                                            name="password" />
+                                                        <input type="text" className="form-control" placeholder={this.state.account.password}
+                                                            name="password" onChange={this.handleChange}/>
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="exampleFormControlInput1">Created date:</label>
                                                         <input type="date" className="form-control"
-                                                            placeholder={this.state.acccount.createdDate}
                                                             disabled
+                                                            value = {this.state.createdDate}
                                                             name="createdDate" />
                                                     </div>
                                                     <div className="form-check">
                                                         <span>Status account:</span> <br />
-                                                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked />
+                                                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" defaultChecked />
                                                         <label className="form-check-label" htmlFor="exampleRadios1" name="status">
                                                             True
                                                         </label>
@@ -112,7 +119,7 @@ class UpdateAccountComponent extends Component {
                                                         <div className="form-group">
                                                             <label htmlFor="exampleFormControlSelect1">Role account:</label>
                                                             <select className="form-control" id="exampleFormControlSelect1"
-                                                                name="roleAccount">
+                                                                name="roleAccount" value = {this.state.account.fkRoleAccount}>
                                                                 {this.mappingDataAllAccounts()}
                                                             </select>
                                                         </div>
