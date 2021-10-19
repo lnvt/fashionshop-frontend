@@ -6,7 +6,7 @@ class MenuLeftComponent extends Component {
         return (
             <div>
                 <div className="menuleft"> 
-                    Left Menu
+                    <img src={require(`../../imgs_product/SLIDESHOW/slideshow_3.jpg`).default} style={{ width: 100 }} alt="" />
                 </div>
             </div>
         );
