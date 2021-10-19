@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import AccountService from '../../../../../services/AccountService';
 import { Link } from 'react-router-dom';
 import SearchComponent from '../../header-homepage/SearchComponent';
-
+import moment from 'moment';
 
 class ContentHomepageComponent extends Component {
 
@@ -75,7 +75,7 @@ class ContentHomepageComponent extends Component {
             <td>{item.username}</td>
             <td>{item.password}</td>
             <td>{item.status.toString()}</td>
-            <td>{item.createdDate}</td>
+            <td>{moment(item.createdDate).format('YYYY-MM-DD')}</td>
             <td>
                 <Link to={{
                     pathname: `/account/${item.accountId}`

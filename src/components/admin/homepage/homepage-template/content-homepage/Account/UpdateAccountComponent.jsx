@@ -1,9 +1,9 @@
-import { Form, Formik } from 'formik';
 import React, { Component } from 'react';
 import AccountService from '../../../../../services/AccountService';
 import RoleAccountService from '../../../../../services/RoleAccountService';
 import FooterHomepageComponent from '../../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent';
+import { Form, Formik, Field } from 'formik';
 import moment from 'moment';
 
 class UpdateAccountComponent extends Component {
@@ -12,13 +12,12 @@ class UpdateAccountComponent extends Component {
         super(props);
         this.state = {
             roleAccounts: [],
-            account: {},
-            accountId: 0,
-            username: "abc",   
+            accountId: this.props.match.params.id,
+            username: "",   
             password: "",
-            status: false,
-            createdDate: moment(new Date()).format('YYYY-MM-DD'),
-            fkRoleAccount: 0,
+            status: true,
+            updateDate: moment(new Date()).format('YYYY-MM-DD'),
+            fkRoleAccount: 3,
         }
     }
 
@@ -26,15 +25,20 @@ class UpdateAccountComponent extends Component {
     componentDidMount = () => {
         this.retrieveAccount();
         this.retrieveAllRoleAccount();
+       
     }
 
     retrieveAccount = () => {
-        AccountService.retrieveAccountService(this.props.match.params.id)
-            .then(response => {
-                this.setState({
-                    account: response.data
-                })
+        AccountService.retrieveAccountService(this.state.accountId)
+        .then(response => {
+            this.setState({
+                username: response.data.username,   
+                password: response.data.password,
+                status: response.data.status,
+                updateDate: moment(response.data.createdDate).format('YYYY-MM-DD'),
+                fkRoleAccount: response.data.fkRoleAccount
             })
+        })
     }
 
     retrieveAllRoleAccount = () => {
@@ -50,17 +54,27 @@ class UpdateAccountComponent extends Component {
     ))
     
     onUpdateSubmit(values) {
-        console.log(values);
+        // AccountService.updateAccount(this.state.accountId, {
+        //     accountId: this.state.accountId,
+        //     username: values.username,
+        //     password: values.password,
+        //     status: values.status,
+        //     createdDate: values.updateDate,
+        //     fkRoleAccount: values.fkRoleAccount
+        // }).then(
+        //     () => {
+        //         this.props.history.push('/homepage')
+        //     }
+        // )
+
+        // this.props.history.push('/home-page')
+        console.log(values)
     }
 
 
     render() {
-        let accountId = this.state.account.accountId;
-        let username = this.state.account.username;
-        let password = this.state.account.password;
-        let createdDate = this.state.account.createdDate;
-        let status = this.state.account.status;
-        let fkRoleAccount = this.state.account.fkRoleAccount;
+        let { accountId, username, password, updateDate, status, fkRoleAccount} = this.state;
+
         return (
             <div>
                 <div className="contentPage">
@@ -74,56 +88,51 @@ class UpdateAccountComponent extends Component {
                                 <div className="form-update-account">
                                     <Formik
                                         initialValues={{
-                                          accountId, username, password, createdDate, status, fkRoleAccount
+                                          accountId, username, password, updateDate, status, fkRoleAccount
                                         }}
                                         onSubmit={this.onUpdateSubmit} 
+                                        enableReinitialize= {true}
                                     >
                                         {
                                             (props) => (
                                                 <Form>
-                                                    <div className="form-group">
-                                                        <label htmlFor="exampleFormControlInput1">ID:</label>
-                                                        <input className="form-control" type="text" placeholder={this.state.account.accountId} disabled
-                                                            name="accountId" />
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="exampleFormControlInput1">User name:</label>
-                                                        <input type="text" className="form-control" placeholder={this.state.account.username} disabled
-                                                            name="username" />
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="exampleFormControlInput1">Password:</label>
-                                                        <input type="text" className="form-control" placeholder={this.state.account.password}
-                                                            name="password" onChange={this.handleChange}/>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="exampleFormControlInput1">Created date:</label>
-                                                        <input type="date" className="form-control"
-                                                            disabled
-                                                            value = {this.state.createdDate}
-                                                            name="createdDate" />
-                                                    </div>
-                                                    <div className="form-check">
-                                                        <span>Status account:</span> <br />
-                                                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" defaultChecked />
-                                                        <label className="form-check-label" htmlFor="exampleRadios1" name="status">
+                                                    <fieldset className="form-group">
+                                                        <label>ID</label>
+                                                        <Field className="form-control"  type="text" name="accountId"/>
+                                                    </fieldset>
+                                                    <fieldset className="form-group">
+                                                        <label>User name</label>
+                                                        <Field className="form-control"  type="text" name="username"/>
+                                                    </fieldset>
+                                                    <fieldset className="form-group">
+                                                        <label>Password</label>
+                                                        <Field className="form-control"  type="text" name="password"/>
+                                                    </fieldset>
+                                                    <fieldset className="form-group">
+                                                        <label>Update date</label>
+                                                        <Field className="form-control"  type="date" name="updateDate"/>
+                                                    </fieldset>
+                                                    <fieldset className="form-group">
+                                                        <div>
+                                                            <label>Status account:</label>
+                                                        </div>
+                        
+                                                        <label className="mr-5">
+                                                            <Field   type="radio" name="status" value="true"/>
                                                             True
                                                         </label>
-                                                        <br />
-                                                        <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false" />
-                                                        <label className="form-check-label" htmlFor="exampleRadios2" name="status">
+                                                        <label>
+                                                            <Field  type="radio" name="status" value="false"/>
                                                             False
                                                         </label>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <div className="form-group">
-                                                            <label htmlFor="exampleFormControlSelect1">Role account:</label>
-                                                            <select className="form-control" id="exampleFormControlSelect1"
-                                                                name="roleAccount" value = {this.state.account.fkRoleAccount}>
-                                                                {this.mappingDataAllAccounts()}
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                        
+                                                    </fieldset>
+                                                    <fieldset className="form-group">
+                                                        <label>Role Account</label>
+                                                        <Field component="select" className="form-control"  type="text" name="fkRoleAccount">
+                                                            {this.mappingDataAllAccounts()}
+                                                        </Field>
+                                                    </fieldset>
                                                     <button className="btn btn-primary"
                                                         onClick={this.onUpdateSubmit()}>
                                                         Save

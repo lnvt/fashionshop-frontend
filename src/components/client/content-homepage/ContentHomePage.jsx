@@ -3,6 +3,7 @@ import bags1 from '../../imgs_product/BAGS/bags_1.png';
 import ProductService from '../../services/ProductService';
 import ListProductService from '../../services/ListProductService';
 
+
 class ContentHomePage extends Component {
 
 
@@ -36,13 +37,16 @@ class ContentHomePage extends Component {
                 })
             })
     }
+
+
+
     render() {
         return (
             <div>
                 <div className="content">
                     <div className="content_top">
                         <div className="heading">
-                            
+
                         </div>
                         <div className="see">
                             <button className="btn btn-outline-info">See all Products</button>

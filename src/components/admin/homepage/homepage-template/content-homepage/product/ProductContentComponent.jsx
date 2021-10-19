@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ProductService from '../../../../../services/ProductService';
 import ListProductService from '../../../../../services/ListProductService';
+import ImageService from '../../../../../services/ImageService';
 import FooterHomepageComponent from '../../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent';
 import { Link } from 'react-router-dom';
+import LeftMenuComponent from '../../menu/LeftMenuComponent';
 
 class ProductContentComponent extends Component {
 
@@ -12,13 +14,16 @@ class ProductContentComponent extends Component {
         this.state = {
             listproduct: [],
             products: [],
-            product: {},
+            images: [],
         }
     }
+
+
 
     componentDidMount = () => {
         this.retrieveAllListProduct();
         this.retrieveAllProduct();
+        this.retrieveAllImage();
     }
 
     retrieveAllListProduct = () => {
@@ -39,25 +44,38 @@ class ProductContentComponent extends Component {
             })
     }
 
+    retrieveAllImage = () => {
+        ImageService.retrieveAllImageService()
+            .then(response => {
+                this.setState({
+                    images: response.data
+                })
+            })
+    }
+
+    mappingDataAllProductsImage = () => this.state.products.map((itemProduct, key) => {
+
+        this.state.images.map((itemImage, key) => {
+            if (itemProduct.fkImageProduct === itemImage.imageId) {
+                console.log("a")
+            }
+        })
+    })
+
     mappingDataAllProducts = () => this.state.products.map((item, key) => (
         <tr key={item.productId}>
-            <th scope="row">{item.productId}</th>
             <td>{item.productName}</td>
-            <td>{item.productCost}</td>
+            <td>{item.productCost} VNĐ</td>
             <td>
-                <input id="number" type="number" defaultValue={item.productQuantity}/>
+                <img src={require(`../../../../../${item.fkImageProduct}`).default} style={{ width: 100 }} alt="" />
             </td>
-            <td>{item.productStatus}</td>
-            <td>{item.fkImageProduct}</td>
             <td>
                 <Link to={{
-                    pathname: `/cart/${item.cartId}`
+                    pathname: `/detail/product/${item.productId}`
                 }}>
-                <button className="btn btn-warning"> Update </button>
+                    <button className="btn btn-warning" style={{ width: 70 }}> Update </button>
                 </Link>
                 &nbsp;
-                <button className="btn btn-danger"
-                    onClick={() => this.deleteAccountClicked(item.cartId)}> Delete </button>
             </td>
         </tr>
     ))
@@ -65,38 +83,38 @@ class ProductContentComponent extends Component {
     render() {
         return (
             <div className="contentPage">
-            <div id="content-wrapper bg-white" className="d-flex flex-column">
-                <div id="content">
-                    <HeaderHompageComponent />
-                    <div className="container-fluid">
-                        <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1>Product</h1>
-                        </div>
-                        <div className="d-flex bd-highlight">
-                            <div className="p-2 w-100 bd-highlight">
-                                <table className="table table-hover table_management ">
-                                    <thead className="table-info">
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Cost</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Feature</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.mappingDataAllProducts()}
-                                    </tbody>
-                                </table>
+                <div id="wrapper">
+                    <LeftMenuComponent />
+                    <div id="content-wrapper bg-white" className="d-flex flex-column">
+                        <div id="content">
+                            <HeaderHompageComponent />
+                            <div className="container-fluid" style={{ width: 1122 }}>
+                                <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                                    <h1 className="mx-auto">Product</h1>
+                                </div>
+                                <div className="d-flex bd-highlight">
+                                    <div className="p-2 w-100 bd-highlight">
+                                        <table className="table table-striped table_management ">
+                                            <thead className="table-info">
+                                                <tr>
+                                                    <th scope="col" style={{ width: 350 }}>Name</th>
+                                                    <th scope="col">Cost</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Feature</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {this.mappingDataAllProducts()}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <FooterHomepageComponent />
                     </div>
                 </div>
-                <FooterHomepageComponent />
             </div>
-        </div>
         );
     }
 }

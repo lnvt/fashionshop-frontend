@@ -8,6 +8,7 @@ import ImageService from '../../services/ImageService';
 import { Link } from 'react-router-dom';
 import './ListProductStyle.css';
 
+
 class ListProductComponent extends Component {
 
     constructor(props) {
@@ -53,7 +54,6 @@ class ListProductComponent extends Component {
     }
 
     mappingProductFollowList = () => this.state.products.map((itemProduct, keyProduct) => {
-
             if (parseInt(this.props.match.params.id) === itemProduct.fkListProduct){
                 return (
                         <div className="grid_1_of_4 images_1_of_4 listgrid">
@@ -61,8 +61,8 @@ class ListProductComponent extends Component {
                                 <Link to ={{
                                     pathname: `/detail/${itemProduct.productId}`
                                 }}>
-                                    <img src={require(`../../imgs_product/SHOES/shoes_1.png`).default} 
-                                        width={30} height={30} alt="" />
+                                    <img src={require(`../../${itemProduct.fkImageProduct}`).default} style={{ width: 100 }} alt="" />
+                                  
                                 </Link>
                             </a>
                             <h2> </h2>

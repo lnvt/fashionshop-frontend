@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import './MenuHeaderTopStyle.css';
+import 'reactjs-popup/dist/index.css';
 
 class MenuHeaderTopComponent extends Component {
+
+
+    popupCartProduct = () => {
+    }
+
+
     render() {
         return (
-            <div className = "headertop">
+            <div className="headertop">
                 <div className="">
                     <div className="styleheader">
                         <ul className="nav-list nav-left">
@@ -13,8 +20,8 @@ class MenuHeaderTopComponent extends Component {
                             <li className="nav-item"><a href="/#">Download</a></li>
                             <li className="nav-item">
                                 Connect &nbsp;
-                                <button className="btn btn-info bi bi-facebook" style = {{width:50}} href="/#"></button> &nbsp;
-                                <button className="btn btn-danger bi bi-google" style = {{width:50}} href="/#"></button>
+                                <button className="btn btn-info bi bi-facebook" style={{ width: 50 }} href="/#"></button> &nbsp;
+                                <button className="btn btn-danger bi bi-google" style={{ width: 50 }} href="/#"></button>
                             </li>
                         </ul>
                         <ul className="nav-list nav-right">
@@ -38,18 +45,19 @@ class MenuHeaderTopComponent extends Component {
                 </div>
                 <div className="header_top" style={{ backgroundColor: "#e7879a" }}>
                     <div className="header_item header_top_1">
-                        <p><a href="/daisyhouse" className = "badge homepage">DAISY HOUSE</a></p>
+                        <p><a href="/daisyhouse" className="badge homepage">DAISY HOUSE</a></p>
                     </div>
                     <div className="header_item header_top_2">
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-3" style={{ width: 700 }}>
                             <input type="text" className="form-control" placeholder="Search items" aria-label="Search items" aria-describedby="basic-addon2" />
                             <div className="input-group-append">
-                                <button className="btn btn-danger bi bi-search" style = {{width:50}} type="button"></button>
+                                <button className="btn btn-danger bi bi-search" style={{ width: 50 }} type="button"></button>
+                            </div>
+                            <div className="header_item header_top_3">
+                                <button className="btn btn-warning bi bi-cart3" style={{ width: 50 }} onClick= {this.popupCartProduct}></button>
                             </div>
                         </div>
-                    </div>
-                    <div className="header_item header_top_3">
-                        <button className="btn btn-warning bi bi-cart3" style = {{width:50}} ></button>
+
                     </div>
                     <div className="clear" />
                 </div>

@@ -4,6 +4,7 @@ import FooterComponent from '../footer/FooterComponent';
 import ProductService from '../../services/ProductService';
 import ListProductService from '../../services/ListProductService';
 import ImageService from '../../services/ImageService';
+
 class DetailProductComponent extends Component {
 
     constructor(props) {
@@ -35,6 +36,8 @@ class DetailProductComponent extends Component {
     retrieveAllProduct = (id) => {
         ProductService.retrieveProductDetailService(this.props.match.params.id)
             .then(response => {
+                
+                console.log(response.data)
                 this.setState({
                     product: response.data
                 })
@@ -65,7 +68,7 @@ class DetailProductComponent extends Component {
     })    
         
     render() {
-        console.log(this.state.imageProduct)
+        console.log(this.state.product.fkImageProduct)
         return (
             <div>
                 <div className="">
@@ -86,7 +89,10 @@ class DetailProductComponent extends Component {
                                         <div id="products_example">
                                             <div id="products">
                                                 <div className="slides_container">
-                                                    <a href="/#"><img src="" alt=" " /></a>
+                                                    <a href="/#">
+                                                        {/* <img src={require(`../../${this.state.product.fkImageProduct}`).default} style={{ width: 100 }} alt="" /> */}
+                                                        <img src={require(`../../imgs_product/SHOES/shoes_22.png`).default} style={{ width: 100 }} alt="" />
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

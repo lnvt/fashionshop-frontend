@@ -7,6 +7,11 @@ class PaymentService {
     retrieveAllPaymentService(){
         return axios.get(`${url}/payment`);
     }
+
+    retrievePaymentService(id){
+        return axios.get(`${url}/payment/${id}`);
+    }
+
 }
 
 export default new PaymentService()

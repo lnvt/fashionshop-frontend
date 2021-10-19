@@ -4,7 +4,7 @@ class TemplateComponent extends Component {
     render() {
         return (
             <div>
-                <div className="">
+                {/* <div className="">
                     <div className="header">
                         <MenuHeaderTopComponent />
                         <div className="header_bottom">
@@ -27,7 +27,7 @@ class TemplateComponent extends Component {
                 <div className="footer wrap">
                     <FooterComponent/>
                 </div>
-                <a href="/#" id="toTop"><span id="toTopHover"> </span></a>
+                <a href="/#" id="toTop"><span id="toTopHover"> </span></a> */}
             </div>
         );
     }

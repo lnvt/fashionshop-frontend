@@ -15,6 +15,14 @@ class AccountService {
     retrieveAccountService(id){
         return axios.get(`${url}/account/${id}`);
     }
+
+    updateAccount(id, account){
+        return axios.put(`${url}/account/${id}`, account);
+    }
+
+    createAccount(account){
+        return axios.post(`${url}/account`, account);
+    }
 }
 
 export default new AccountService()
