@@ -24,6 +24,7 @@ import ProductContentComponent from '../admin/homepage/homepage-template/content
 import CreateProductComponent from '../admin/homepage/homepage-template/content-homepage/product/CreateProductComponent';
 import UpdateProductComponent from '../admin/homepage/homepage-template/content-homepage/product/UpdateProductComponent';
 import ListProductComponent from '../client/listproduct/ListProductComponent';
+import PaymentComponent from '../client/payment/PaymentComponent';
 
 
 
@@ -52,6 +53,7 @@ class RouterURL extends Component {
               <Route path="/log-out" component={LogoutComponent} />
 
               {/* Client */}
+              <Route path="/payment" component={PaymentComponent} />
               <Route path="/listproduct/:id" component={ListProductComponent} />
               <Route path="/" exact component={LoginComponent} />
               <Route path="/information/:name" component={HomepageComponent} />

@@ -7,6 +7,8 @@ import ListProductService from '../../services/ListProductService';
 import ImageService from '../../services/ImageService';
 import { Link } from 'react-router-dom';
 import './ListProductStyle.css';
+import PaymentComponent from '../payment/PaymentComponent';
+
 
 
 class ListProductComponent extends Component {
@@ -17,6 +19,7 @@ class ListProductComponent extends Component {
             products: [],
             listProduct: {},
             imageProducts: [],
+            listCartProducts: [],
         }
     }
 
@@ -53,6 +56,22 @@ class ListProductComponent extends Component {
             }) 
     }
 
+    // Cart
+
+    addProductIntoCart = (productId,productName, productCost, productImage) => {
+        var listCartProducts = new Array();
+        var productCart = new Object();
+        productCart.productId = productId;
+        productCart.productName = productName;
+        productCart.productCost = productCost;
+        productCart.productImage = productImage;
+        listCartProducts.push(productCart);
+
+        this.setState({
+            listCartProducts : listCartProducts
+        })
+    }
+
     mappingProductFollowList = () => this.state.products.map((itemProduct, keyProduct) => {
             if (parseInt(this.props.match.params.id) === itemProduct.fkListProduct){
                 return (
@@ -72,7 +91,10 @@ class ListProductComponent extends Component {
                                     <p><span className="rupees">{itemProduct.productCost} VND</span></p>
                                 </div>
                                 <div className="add-cart">
-                                    <h4><a href="detail/{item}">Add to Cart</a></h4>
+                                    <h4><button className = "btn btn-primary" style={{width:100}} 
+                                        onClick = {() => this.addProductIntoCart(itemProduct.productId, itemProduct.productName, itemProduct.productCost, itemProduct.fkImageProduct)}> 
+                                            Add to Cart 
+                                    </button></h4>
                                 </div>
                                 <div className="clear" />
                             </div>
@@ -80,13 +102,19 @@ class ListProductComponent extends Component {
                 )
             }
         })
+
+    getProductItems = () => {
+        return <PaymentComponent 
+                 getProductItems = {this.state.listCartProducts}/>
+    }
+
     render() {
         return (
-
             <div>
                 <div className="">
                     <div className="header">
-                        <MenuHeaderTopComponent />
+                        <MenuHeaderTopComponent 
+                            cartProductItems = {this.state.listCartProducts}/>
                         <div className="header_bottom">
                             <MenuHeaderBottomComponent />
                         </div>

@@ -3,13 +3,16 @@ import './MenuHeaderTopStyle.css';
 import 'reactjs-popup/dist/index.css';
 import Swal from 'sweetalert2';
 import { Button,Modal} from 'react-bootstrap';  
+import ModalHeader from 'react-bootstrap/esm/ModalHeader';
+import PaymentComponent from '../payment/PaymentComponent';
 
 class MenuHeaderTopComponent extends Component {
 
     constructor() {
         super();
         this.state = {
-            show: false
+            show: false,
+            product:{}
         }
     }
 
@@ -20,14 +23,11 @@ class MenuHeaderTopComponent extends Component {
     }
 
     handleModal(){  
-        this.setState({show:!this.state.show})  
+        this.setState({show:!this.state.show})
     }  
 
-    btnPaymentCart(){
-        console.log("123")
-    }
-
     render() {
+        
         return (
             <div className="headertop">
                 <div className="">
@@ -80,11 +80,20 @@ class MenuHeaderTopComponent extends Component {
                 </div>
 
                 <Modal show={this.state.show} onHide={() => this.handleModal()} className="modalCart">
-                    <Modal.Body>
-                        
-                    </Modal.Body>
+                    <ModalHeader>a</ModalHeader>
+                   
+                        {this.props.cartProductItems.map((item,key) => (
+                             <Modal.Body>
+                            <div>
+                                <h6>{item.productName}</h6>
+                                <h6>{item.productCost}</h6>
+                                <img src={require(`../../${item.productImage}`).default} style={{ width: 100 }} alt="" />
+                            </div>
+                            </Modal.Body>
+                        ))}
+                 
                     <Modal.Footer>
-                        <Button className="btn btn-success" onClick={() => this.btnPaymentCart()}>Payment</Button>
+                        <Button className="btn btn-success" href="/payment">Payment</Button>
                         <Button onClick={() => this.handleModal()}>Close</Button>
                     </Modal.Footer>
                 </Modal>

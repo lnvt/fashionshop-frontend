@@ -4,6 +4,7 @@ import FooterComponent from '../footer/FooterComponent';
 import ProductService from '../../services/ProductService';
 import ListProductService from '../../services/ListProductService';
 import ImageService from '../../services/ImageService';
+import { Link } from 'react-router-dom';
 
 class DetailProductComponent extends Component {
 
@@ -54,15 +55,21 @@ class DetailProductComponent extends Component {
     }
 
     mappingAllListProduct = () => this.state.listProduct.map((item,key) => (
-        <a href= "#">
-            {item.listProductName}    
-        </a>
+        <ul>
+            <li>
+            <Link to={{
+                    pathname: `/listproduct/${item.listProductId}`
+                }}> {item.listProductName} </Link>
+            </li>
+        </ul>
     ))
 
     mappingWebListProduct = () => this.state.listProduct.map((item, key) => {
         if(this.state.product.fkListProduct === item.listProductId) {
             return (
-                <div> <a href = "/#"> Home </a> - <a href = "/#"> {item.listProductName} </a> </div>
+                <div> <a href = "/daisyhouse"> Home </a> - <Link to={{
+                    pathname: `/listproduct/${item.listProductId}`
+                }}> {item.listProductName} </Link> </div>
             )
         }
     })    
@@ -113,26 +120,6 @@ class DetailProductComponent extends Component {
                                             <p> Product Description</p>
                                             {this.state.product.productDescription}
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="content_bottom">
-                                <div className="heading">
-                                    <h3>Related Products</h3>
-                                </div>
-                                <div className="see">
-                                    <p><a href="/#">See all Products</a></p>
-                                </div>
-                                <div className="clear" />
-                            </div>
-                            <div className="section group">
-                                <div className="grid_1_of_4 images_1_of_4">
-                                    <a href="/#"><img src="images/new-pic1.jpg" alt="" /></a>
-                                    <div className="price" style={{ border: 'none' }}>
-                                        <div className="add-cart" style={{ float: 'none' }}>
-                                            <h4><a href="/#">Add to Cart</a></h4>
-                                        </div>
-                                        <div className="clear" />
                                     </div>
                                 </div>
                             </div>

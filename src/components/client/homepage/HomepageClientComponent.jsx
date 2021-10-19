@@ -3,8 +3,7 @@ import ContentHomePage from '../content-homepage/ContentHomePage';
 import FooterComponent from '../footer/FooterComponent';
 import MenuHeaderBottomComponent from '../menu-header-bottom/MenuHeaderBottomComponent';
 import MenuHeaderTopComponent from '../menu-header-top/MenuHeaderTopComponent';
-import MenuRightComponent from '../menu-right/MenuRightComponent';
-import MenuLeftComponent from '../menu-left/MenuLeftComponent';
+
 import './HomepageClientComponent';
 
 class HomepageClient extends Component {
@@ -16,15 +15,6 @@ class HomepageClient extends Component {
                         <MenuHeaderTopComponent />
                         <div className="header_bottom">
                             <MenuHeaderBottomComponent />
-                        </div>
-                        <div className="header_slide wrap">
-                            <div className="header_bottom_left">
-                                <MenuLeftComponent />
-                            </div>
-                            <div className="header_bottom_right">
-                                <MenuRightComponent />
-                            </div>
-                            <div className="clear" />
                         </div>
                     </div>
                     <div className="main wrap">
