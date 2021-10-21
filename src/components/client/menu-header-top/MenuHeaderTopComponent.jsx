@@ -4,7 +4,7 @@ import 'reactjs-popup/dist/index.css';
 import Swal from 'sweetalert2';
 import { Button, Modal } from 'react-bootstrap';
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
-// import PaymentComponent from '../payment/PaymentComponent';
+import { Link } from 'react-router-dom';
 
 class MenuHeaderTopComponent extends Component {
 
@@ -12,7 +12,8 @@ class MenuHeaderTopComponent extends Component {
         super();
         this.state = {
             show: false,
-            product: {}
+            product: {},
+            retrieveDataCarts: [],
         }
     }
 
@@ -22,13 +23,17 @@ class MenuHeaderTopComponent extends Component {
         })
     }
 
+    componentDidMount(){
+        this.setState({
+            retrieveDataCarts: this.props.sendDataProductsCartDatas
+        })
+    }
+
     handleModal() {
         this.setState({ show: !this.state.show })
     }
 
     render() {
-        // Don't retrieve state to load cart
-        // console.log(this.props.cartProductItems);
         return (
             <div className="headertop">
                 <div className="">
@@ -82,19 +87,24 @@ class MenuHeaderTopComponent extends Component {
                 <Modal show={this.state.show} onHide={() => this.handleModal()} className="modalCart">
                     <ModalHeader>a</ModalHeader>
                     {
-                        this.props.cartProductItems.map((item, key) => (
+                        this.props.sendDataProductsCartDatas.map((item, key) => (
                             <Modal.Body>
                                 <div>
                                     <h6>{item.productName}</h6>
                                     <h6>{item.productCost}</h6>
-                                    <img src={require(`../../${item.productImage}`).default} style={{ width: 100 }} alt="" />
+                                    {/* <img src={require(`../../${item.productImage}`).default} style={{ width: 100 }} alt="" /> */}
                                 </div>
                             </Modal.Body>
                         ))}
 
 
                     <Modal.Footer>
-                        <Button className="btn btn-success" href="/payment">Payment</Button>
+                        <Link to = {{
+                             pathname: "/payment",
+                             state: this.state.retrieveDataCarts
+                        }}>
+                            <button className="btn btn-success">Payment</button>
+                        </Link>
                         <Button onClick={() => this.handleModal()}>Close</Button>
                     </Modal.Footer>
                 </Modal>

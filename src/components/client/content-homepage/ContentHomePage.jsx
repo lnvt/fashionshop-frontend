@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductService from '../../services/ProductService';
 import ListProductService from '../../services/ListProductService';
 import { Link } from 'react-router-dom';
+import PaymentComponent from '../payment/PaymentComponent';
 
 class ContentHomePage extends Component {
 
@@ -11,13 +12,14 @@ class ContentHomePage extends Component {
         this.state = {
             listProducts: [],
             products: [],
+            listCartProductDatas: [],
+            product: {}
         }
     }
 
     componentDidMount() {
         this.retrieveAllListProduct();
         this.retrieveAllProduct();
-
     }
 
     retrieveAllListProduct = () => {
@@ -38,6 +40,22 @@ class ContentHomePage extends Component {
             })
     }
 
+    // Cart
+    AddProductIntoCart(productId){
+
+        ProductService.retrieveProductDetailService(productId)
+        .then(response => {
+            this.setState({
+                product: response.data
+            })
+        })
+        var itemProducts = this.state.listCartProductDatas.concat(this.state.product);
+        this.setState({
+            listCartProductDatas: itemProducts
+        })
+        this.props.getProductsIntoCart(this.state.listCartProductDatas);
+    }
+
     mappingProduct = (listProductId) => this.state.products.map((item, key) => {
         if (listProductId === item.fkListProduct && key < 7) {
             return (
@@ -54,7 +72,8 @@ class ContentHomePage extends Component {
                                 <p><span className="rupees">{item.productCost}</span></p>
                             </div>
                             <div className="">
-                                <h4><a href="preview.html" className="btn btn-info">Add to Cart</a></h4>
+                                <h4><button className="btn btn-info"
+                                            onClick = {() => this.AddProductIntoCart(item.productId)}>Add to Cart</button></h4>
                             </div>
                             <div className="clear" />
                         </div>

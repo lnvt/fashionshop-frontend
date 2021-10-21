@@ -38,7 +38,6 @@ class DetailProductComponent extends Component {
     retrieveProduct = (id) => {
         ProductService.retrieveProductDetailService(this.props.match.params.id)
             .then(response => {
-                // console.log(response.data)
                 this.setState({
                     product: response.data
                 })

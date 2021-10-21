@@ -5,13 +5,19 @@ import Swal from 'sweetalert2';
 class PaymentComponent extends Component {
 
 
+    constructor(props) {
+        super(props);
+        
+    }
+    
+
     mappingCart = () => (
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
+        <div className="container">
+            <div className="row">
+                <div className="col-4">
                     <img src={require(`../../imgs_product/SHOES/shoes_19.png`).default} style={{ width: 100 }} alt="" />
                 </div>
-                <div class="col-8">
+                <div className="col-8">
                     Name: Shoes 123<br />
                     Cost:  1.500.000 VNĐ<br/>
                 </div>
@@ -42,6 +48,7 @@ class PaymentComponent extends Component {
     }
 
     render() {
+        console.log(this.props.sendCartProductsDataState);
         return (
             <div>
                 <div className="">
@@ -103,6 +110,7 @@ class PaymentComponent extends Component {
                         <FooterComponent />
                     </div>
                 </div>
+              
             </div>
         );
     }
