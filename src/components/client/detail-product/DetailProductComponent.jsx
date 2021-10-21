@@ -12,18 +12,19 @@ class DetailProductComponent extends Component {
         super(props)
         this.state = {
             product: {},
-            listProduct:[],
-            imageProduct:{}
+            listProduct: [],
+            imageProduct: {},
+            image: `../../imgs_product/SHOES/shoes_9.png`,
         }
     }
 
     componentDidMount() {
-        this.retrieveAllProduct();
+        this.retrieveProduct();
         this.retrieveAllListProduct();
         this.retrieveAllImage();
     }
 
-    
+
     retrieveAllImage = () => {
         ImageService.retrieveImageService(this.props.match.params.id)
             .then(response => {
@@ -31,14 +32,13 @@ class DetailProductComponent extends Component {
                 this.setState({
                     imageProducts: response.data
                 })
-            }) 
+            })
     }
 
-    retrieveAllProduct = (id) => {
+    retrieveProduct = (id) => {
         ProductService.retrieveProductDetailService(this.props.match.params.id)
             .then(response => {
-                
-                console.log(response.data)
+                // console.log(response.data)
                 this.setState({
                     product: response.data
                 })
@@ -47,17 +47,17 @@ class DetailProductComponent extends Component {
 
     retrieveAllListProduct() {
         ListProductService.retrieveAllListProductService()
-            .then(response =>{
+            .then(response => {
                 this.setState({
                     listProduct: response.data
                 })
             })
     }
 
-    mappingAllListProduct = () => this.state.listProduct.map((item,key) => (
-        <ul>
-            <li>
-            <Link to={{
+    mappingAllListProduct = () => this.state.listProduct.map((item, key) => (
+        <ul key = {key}>
+            <li key = {key}>
+                <Link to={{
                     pathname: `/listproduct/${item.listProductId}`
                 }}> {item.listProductName} </Link>
             </li>
@@ -65,17 +65,21 @@ class DetailProductComponent extends Component {
     ))
 
     mappingWebListProduct = () => this.state.listProduct.map((item, key) => {
-        if(this.state.product.fkListProduct === item.listProductId) {
+        if (this.state.product.fkListProduct === item.listProductId) {
             return (
-                <div> <a href = "/daisyhouse"> Home </a> - <Link to={{
+                <div> <a href="/daisyhouse"> Home </a> - <Link to={{
                     pathname: `/listproduct/${item.listProductId}`
                 }}> {item.listProductName} </Link> </div>
             )
         }
-    })    
-        
+    })
+    AddProductIntoCart = () => {
+        console.log("abc");
+    }
+
     render() {
-        console.log(this.state.product.fkImageProduct)
+        // Don't display image
+        // console.log(this.state.product.fkImageProduct)
         return (
             <div>
                 <div className="">
@@ -84,7 +88,7 @@ class DetailProductComponent extends Component {
                     </div>
                     <div className="content_top mx-auto">
                         <div className="back-links ">
-                           {this.mappingWebListProduct()}
+                            {this.mappingWebListProduct()}
                         </div>
                         <div className="clear" />
                     </div>
@@ -96,10 +100,8 @@ class DetailProductComponent extends Component {
                                         <div id="products_example">
                                             <div id="products">
                                                 <div className="slides_container">
-                                                    <a href="/#">
-                                                        {/* <img src={require(`../../${this.state.product.fkImageProduct}`).default} style={{ width: 100 }} alt="" /> */}
-                                                        <img src={require(`../../imgs_product/SHOES/shoes_22.png`).default} style={{ width: 100 }} alt="" />
-                                                    </a>
+                                                    {/* <img src={require(`../../${this.state.product.image}`).default} style={{ width: 100 }} alt="" /> */}
+                                                    <img src={require('../../imgs_product/SHOES/shoes_1.png').default} style={{ width: 100 }} alt="" />
                                                 </div>
                                             </div>
                                         </div>
@@ -110,6 +112,9 @@ class DetailProductComponent extends Component {
                                     <div className="price">
                                         <p>Price: <span>{this.state.product.productCost} VNĐ</span></p>
                                     </div>
+                                    <button className = "btn btn-info" onClick = {this.AddProductIntoCart}>
+                                        Add to cart
+                                    </button>
                                 </div>
                                 <div className="clear" />
                             </div>
@@ -130,6 +135,7 @@ class DetailProductComponent extends Component {
                                 {this.mappingAllListProduct()}
                             </ul>
                         </div>
+                        
                     </div>
                     <div className="footer">
                         <FooterComponent />

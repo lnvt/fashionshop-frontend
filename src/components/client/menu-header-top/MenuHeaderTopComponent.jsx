@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './MenuHeaderTopStyle.css';
 import 'reactjs-popup/dist/index.css';
 import Swal from 'sweetalert2';
-import { Button,Modal} from 'react-bootstrap';  
+import { Button, Modal } from 'react-bootstrap';
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
-import PaymentComponent from '../payment/PaymentComponent';
+// import PaymentComponent from '../payment/PaymentComponent';
 
 class MenuHeaderTopComponent extends Component {
 
@@ -12,7 +12,7 @@ class MenuHeaderTopComponent extends Component {
         super();
         this.state = {
             show: false,
-            product:{}
+            product: {}
         }
     }
 
@@ -22,12 +22,13 @@ class MenuHeaderTopComponent extends Component {
         })
     }
 
-    handleModal(){  
-        this.setState({show:!this.state.show})
-    }  
+    handleModal() {
+        this.setState({ show: !this.state.show })
+    }
 
     render() {
-        
+        // Don't retrieve state to load cart
+        // console.log(this.props.cartProductItems);
         return (
             <div className="headertop">
                 <div className="">
@@ -74,24 +75,24 @@ class MenuHeaderTopComponent extends Component {
                         </div>
                     </div>
                     <div className="header_item header_top_3">
-                        <Button className="btn btn-warning bi bi-cart3" style={{ width: 50 }} onClick={()=>this.handleModal()}></Button>  
+                        <Button className="btn btn-warning bi bi-cart3" style={{ width: 50 }} onClick={() => this.handleModal()}></Button>
                     </div>
                     <div className="clear" />
                 </div>
-
                 <Modal show={this.state.show} onHide={() => this.handleModal()} className="modalCart">
                     <ModalHeader>a</ModalHeader>
-                   
-                        {this.props.cartProductItems.map((item,key) => (
-                             <Modal.Body>
-                            <div>
-                                <h6>{item.productName}</h6>
-                                <h6>{item.productCost}</h6>
-                                <img src={require(`../../${item.productImage}`).default} style={{ width: 100 }} alt="" />
-                            </div>
+                    {
+                        this.props.cartProductItems.map((item, key) => (
+                            <Modal.Body>
+                                <div>
+                                    <h6>{item.productName}</h6>
+                                    <h6>{item.productCost}</h6>
+                                    <img src={require(`../../${item.productImage}`).default} style={{ width: 100 }} alt="" />
+                                </div>
                             </Modal.Body>
                         ))}
-                 
+
+
                     <Modal.Footer>
                         <Button className="btn btn-success" href="/payment">Payment</Button>
                         <Button onClick={() => this.handleModal()}>Close</Button>

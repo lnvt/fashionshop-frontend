@@ -109,11 +109,11 @@ class ContentHomepageComponent extends Component {
                                 <h1 className="mx-auto">Account Administration</h1>
                             </div>
                             <div className="container">
-                                <div class="row">
-                                    <div class="col-2">
+                                <div className="row">
+                                    <div className="col-2">
                                         <a className="btn mt-2 btn-outline-info" href="/create/account" role="button">Create Account</a>
                                     </div>
-                                    <div class="col">
+                                    <div className="col">
                                         <SearchComponent />
                                     </div>
                                 </div>

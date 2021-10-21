@@ -53,15 +53,6 @@ class ProductContentComponent extends Component {
             })
     }
 
-    mappingDataAllProductsImage = () => this.state.products.map((itemProduct, key) => {
-
-        this.state.images.map((itemImage, key) => {
-            if (itemProduct.fkImageProduct === itemImage.imageId) {
-                console.log("a")
-            }
-        })
-    })
-
     mappingDataAllProducts = () => this.state.products.map((item, key) => (
         <tr key={item.productId}>
             <td>{item.productName}</td>

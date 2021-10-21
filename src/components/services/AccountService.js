@@ -17,10 +17,12 @@ class AccountService {
     }
 
     updateAccount(id, account){
+        console.log(`${url}/account/${id}`);
         return axios.put(`${url}/account/${id}`, account);
     }
 
     createAccount(account){
+        console.log(account)
         return axios.post(`${url}/account`, account);
     }
 }

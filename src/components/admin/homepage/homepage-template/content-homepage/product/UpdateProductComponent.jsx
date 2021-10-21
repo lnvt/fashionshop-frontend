@@ -3,7 +3,6 @@ import ProductService from '../../../../../services/ProductService';
 import { Form, Formik, Field } from 'formik';
 import FooterHomepageComponent from '../../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent';
-import caps from '../../../../../imgs_product/BAGS/bags_1.png';
 
 class UpdateProductComponent extends Component {
 
@@ -24,7 +23,6 @@ class UpdateProductComponent extends Component {
     
     componentDidMount = () => {
         this.retrieveProduct();
-        this.mappingImageProduct();
     }
 
     retrieveProduct = () => {
@@ -62,11 +60,6 @@ class UpdateProductComponent extends Component {
         console.log(values)
     }
 
-
-    mappingImageProduct = () => {
-        var pathImg = this.state.fkImageProduct;
-        console.log(this.mappingImageProduct)
-    }
 
     render() {
         let { productId, productName, productCost, productDescription, productQuantity, productStatus, fkImageProduct, fkListProduct} = this.state;

@@ -19,6 +19,7 @@ class UpdateAccountComponent extends Component {
             updateDate: moment(new Date()).format('YYYY-MM-DD'),
             fkRoleAccount: 3,
         }
+        this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
     }
 
 
@@ -35,7 +36,7 @@ class UpdateAccountComponent extends Component {
                 username: response.data.username,   
                 password: response.data.password,
                 status: response.data.status,
-                updateDate: moment(response.data.createdDate).format('YYYY-MM-DD'),
+                updateDate: moment(new Date()).format('YYYY-MM-DD'),
                 fkRoleAccount: response.data.fkRoleAccount
             })
         })
@@ -54,21 +55,17 @@ class UpdateAccountComponent extends Component {
     ))
     
     onUpdateSubmit(values) {
-        // AccountService.updateAccount(this.state.accountId, {
-        //     accountId: this.state.accountId,
-        //     username: values.username,
-        //     password: values.password,
-        //     status: values.status,
-        //     createdDate: values.updateDate,
-        //     fkRoleAccount: values.fkRoleAccount
-        // }).then(
-        //     () => {
-        //         this.props.history.push('/homepage')
-        //     }
-        // )
 
-        // this.props.history.push('/home-page')
-        console.log(values)
+        let account = {
+            accountId: this.state.accountId,
+            username: values.username,   
+            password: values.password,
+            status: values.status,
+            updateDate: values.updateDate,
+            fkRoleAccount: values.fkRoleAccount
+        }
+        AccountService.updateAccount(this.state.accountId, account)
+            .then(() => this.props.history.push('/home-page'))
     }
 
 
@@ -134,7 +131,7 @@ class UpdateAccountComponent extends Component {
                                                         </Field>
                                                     </fieldset>
                                                     <button className="btn btn-primary"
-                                                        onClick={this.onUpdateSubmit()}>
+                                                        onClick={this.onUpdateSubmit.bind(this)}>
                                                         Save
                                                     </button>
                                                 </Form>

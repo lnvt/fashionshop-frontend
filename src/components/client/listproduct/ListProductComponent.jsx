@@ -121,7 +121,6 @@ class ListProductComponent extends Component {
                     </div>
                     <div className="main wrap">
                         <div>
-                            <h1>List Product - {this.props.match.params.id}</h1>
                             <div className="section group">
                                     {this.mappingProductFollowList()}
                                 </div>

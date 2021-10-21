@@ -18,44 +18,28 @@ class CreateAccountComponent extends Component {
             username: "",   
             password: "",
             status: true,
-            updateDate: moment(new Date()).format('YYYY-MM-DD'),
-            fkRoleAccount: 3,
+            createdDate: moment(new Date()).format('YYYY-MM-DD'),
+            fkRoleAccount: "",
         }
+        this.onCreateSubmit = this.onCreateSubmit.bind(this);
     }
 
 
     componentDidMount = () => {
-        this.createAccount();
         this.retrieveAllRoleAccount();
     }
 
     onCreateSubmit(values) {
-        // AccountService.createAccount({
-        //     accountId: this.state.accountId,
-        //     username: values.username,
-        //     password: values.password,
-        //     status: values.status,
-        //     createdDate: values.updateDate,
-        //     fkRoleAccount: values.fkRoleAccount
-        // }).then(
-        //     () => {
-        //         this.props.history.push('/homepage')
-        //     }
-        // )
-        console.log(values);
-    }
-
-    createAccount(){
-        AccountService.createAccount(this.state.accountId)
-        .then(response => {
-            this.setState({
-                username: response.data.username,   
-                password: response.data.password,
-                status: response.data.status,
-                updateDate: moment(response.data.createdDate).format('YYYY-MM-DD'),
-                fkRoleAccount: response.data.fkRoleAccount
-            })
-        })
+        let account = {
+            accountId: parseInt(values.accountId),
+            username: values.username,   
+            password: values.password,
+            status: values.status,
+            createdDate: moment(new Date()).format('YYYY-MM-DD'),
+            fkRoleAccount: values.fkRoleAccount
+        }
+        AccountService.createAccount(account)
+            .then(() => this.props.history.push('/home-page'))
     }
 
     retrieveAllRoleAccount = () => {
@@ -72,7 +56,7 @@ class CreateAccountComponent extends Component {
         <option value={item.roleId}> {item.roleName} </option>
     ))
     render() {
-        let { accountId, username, password, updateDate, status, fkRoleAccount} = this.state;
+        let { accountId, username, password, createdDate, status, fkRoleAccount} = this.state;
         return (
             <div>
                 <div className="contentPage">
@@ -86,7 +70,7 @@ class CreateAccountComponent extends Component {
                                 <div className="form-create-account">
                                 <Formik
                                         initialValues={{
-                                          accountId, username, password, updateDate, status, fkRoleAccount
+                                          accountId, username, password, createdDate, status, fkRoleAccount
                                         }}
                                         onSubmit={this.onCreateSubmit} 
                                         enableReinitialize= {true}
@@ -107,8 +91,8 @@ class CreateAccountComponent extends Component {
                                                         <Field className="form-control"  type="text" name="password"/>
                                                     </fieldset>
                                                     <fieldset className="form-group">
-                                                        <label>Update date</label>
-                                                        <Field className="form-control"  type="date" name="updateDate"/>
+                                                        <label>Created date</label>
+                                                        <Field className="form-control"  type="date" name="createdDate"/>
                                                     </fieldset>
                                                     <fieldset className="form-group">
                                                         <div>
@@ -132,7 +116,7 @@ class CreateAccountComponent extends Component {
                                                         </Field>
                                                     </fieldset>
                                                     <button className="btn btn-primary"
-                                                        onClick={this.onCreateSubmit()}>
+                                                        onClick={this.onCreateSubmit    }>
                                                         Create
                                                     </button>
                                                 </Form>
