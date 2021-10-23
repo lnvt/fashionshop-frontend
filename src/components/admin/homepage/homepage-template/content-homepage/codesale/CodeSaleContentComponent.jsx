@@ -5,6 +5,7 @@ import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent
 import LeftMenuComponent from '../../menu/LeftMenuComponent';
 import { Form, Formik, Field } from 'formik';
 import Swal from 'sweetalert2';
+import './CodeSaleContentStyle.css';
 
 class CodeSaleContentComponent extends Component {
 
@@ -13,7 +14,12 @@ class CodeSaleContentComponent extends Component {
         this.state = {
             codesales: [],
             codesale: {},
+            codeSaleId: "",
+            codeSaleName: "",
+            codeSaleStatus: true,
+            codeSalePercentCost: 0,
         }
+        this.saveCreateCodeSale = this.saveCreateCodeSale.bind(this);
     }
 
     componentDidMount = () => {
@@ -48,19 +54,20 @@ class CodeSaleContentComponent extends Component {
                 )
                 CodeSaleService.deleteCodeSaleService(id)
                     .then(response => {
-                        this.retrieveAllAccount();
+                        this.retrieveAllCodeSale();
                     })
             }
         })
 
     }
-
     mappingDataAllCodeSale = () => this.state.codesales.map((item, key) => (
         <tr key={item.codeSaleId}>
             <th scope="row">{item.codeSaleId}</th>
             <td>{item.codeSaleName}</td>
             <td>{item.codeSalePercentCost}</td>
-            <td>{item.codeSaleStatus.toString()}</td>
+            <td>
+                {item.codeSaleStatus.toString()}
+            </td>
             <td>
                 <button className="btn btn-danger"
                     onClick={() => this.deleteAccountClicked(item.codeSaleId, item.codeSaleName)} style={{ width: 100 }}> Delete </button>
@@ -79,7 +86,21 @@ class CodeSaleContentComponent extends Component {
         return result;
     }
 
+    saveCreateCodeSale = (values) => {
+        let codesale = {
+            codeSaleId: values.codeSaleId,
+            codeSaleName: this.makeid(10),
+            codeSalePercentCost: values.codeSalePercentCost,
+            codeSaleStatus: this.state.codeSaleStatus,
+        }
+        CodeSaleService.createCodeSale(codesale)
+            .then(() => {
+                this.retrieveAllCodeSale();
+            })
+    }
+
     render() {
+        let { codeSaleId, codeSaleName, codeSalePercentCost, codeSaleStatus } = this.state;
         return (
             <div className="contentPage">
                 <div id="wrapper">
@@ -93,40 +114,41 @@ class CodeSaleContentComponent extends Component {
                                 </div>
                                 <div className="addCodeSale">
                                     <button className="btn btn-primary mb-2 mr-2" onClick={() => this.makeid(10)}> Generate CodeSale</button>
-                                    <button className="btn btn-success mb-2"> Create CodeSale</button>
-                                    <Formik
 
+                                    <Formik
+                                        initialValues={{
+                                            codeSaleId, codeSaleName, codeSalePercentCost, codeSaleStatus
+                                        }}
+                                        onSubmit={this.saveCreateCodeSale}
+                                        enableReinitialize={true}
                                     >
                                         {(props) => (
                                             <Form>
                                                 <div class="row">
                                                     <div class="col">
                                                         <fieldset className="form-group">
-                                                            <label>Code sale name</label>
-                                                            <Field className="form-control" type="text" name="codeName" value={this.makeid(10)}/>
-                                                        </fieldset>
-                                                    </div>
-                                                    <div class="col">
-                                                        <fieldset className="form-group">
                                                             <label>Code sale percent</label>
-                                                            <Field className="form-control" type="number" name="codePercent" min="10" max="30"/>
+                                                            <Field className="form-control numberCodeSale"  type="text" name="codeSalePercentCost"/>
                                                         </fieldset>
                                                     </div>
                                                     <div class="col">
                                                         <fieldset className="form-group">
-                                                            <label>Code sale status</label> <br/>
+                                                            <div>
+                                                                <label>Status account:</label>
+                                                            </div>
                                                             <label className="mr-5">
-                                                                <Field type="radio" name="status" value="true" />
+                                                                <Field type="radio" name="codeSaleStatus" value="true" />
                                                                 True
                                                             </label>
                                                             <label>
-                                                                <Field type="radio" name="status" value="false" />
+                                                                <Field type="radio" name="codeSaleStatus" value="false" />
                                                                 False
                                                             </label>
 
                                                         </fieldset>
                                                     </div>
                                                 </div>
+                                                <button className="btn btn-success mb-2" onClick={this.saveCreateCodeSale}> Create CodeSale</button>
                                             </Form>
                                         )}
                                     </Formik>

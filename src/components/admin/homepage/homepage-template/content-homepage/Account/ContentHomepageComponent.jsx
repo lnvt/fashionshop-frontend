@@ -5,7 +5,6 @@ import './ContentHomepageStyle.css';
 import Swal from 'sweetalert2';
 import AccountService from '../../../../../services/AccountService';
 import { Link } from 'react-router-dom';
-import SearchComponent from '../../header-homepage/SearchComponent';
 import moment from 'moment';
 
 class ContentHomepageComponent extends Component {
@@ -18,6 +17,7 @@ class ContentHomepageComponent extends Component {
             showFormAddAccount: false,
             showFormUpdateAccount: false,
             account: {},
+            searchText: "",
         }
     }
 
@@ -98,6 +98,12 @@ class ContentHomepageComponent extends Component {
         </tr>
     ))
 
+    getTextSearch = (dulieu) => {
+        this.setState({
+            searchText: dulieu
+        });
+    }
+
     render() {
         return (
             <div className="contentPage">
@@ -112,9 +118,6 @@ class ContentHomepageComponent extends Component {
                                 <div className="row">
                                     <div className="col-2">
                                         <a className="btn mt-2 btn-outline-info" href="/create/account" role="button">Create Account</a>
-                                    </div>
-                                    <div className="col">
-                                        <SearchComponent />
                                     </div>
                                 </div>
                             </div>

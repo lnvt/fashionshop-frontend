@@ -6,13 +6,14 @@ import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent
 import LeftMenuComponent from '../../menu/LeftMenuComponent';
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+
 class CartContentComponent extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            carts: [],
-            account: {}
+            carts: []
         }
     }
 
@@ -22,15 +23,6 @@ class CartContentComponent extends Component {
 
     retrieveAllCart = () => {
         CartService.retrieveAllCartService()
-            .then(response => {
-                this.setState({
-                    carts: response.data
-                })
-            })
-    }
-
-    retrieveAccount = () => {
-        AccountService.retrieveAccountService()
             .then(response => {
                 console.log(response)
                 this.setState({
@@ -64,17 +56,19 @@ class CartContentComponent extends Component {
         })
     }
 
+    
     mappingDataAllCarts = () => this.state.carts.map((item, key) => (
         <tr key={item.cartId}>
             <th scope="row">{item.cartId}</th>
-            <td>{item.cartName}</td>
+            <td>
+            {item.cartName}
+            </td>
             <td>{moment(item.cartDate).format('YYYY-MM-DD')}</td>
-            <td>{item.fkProductCart}</td>
             <td>  {item.cartStatus.toString()} </td>
             <td>
                 &nbsp;
                 <button className="btn btn-danger"
-                    onClick={() => this.deleteAccountClicked(item.cartId, item.cartName)} > Delete </button>
+                    onClick={() => this.deleteAccountClicked(item.cartId, item.cartName)} style={{ width: 100 }} > Delete </button>
             </td>
            
         </tr>
@@ -100,7 +94,6 @@ class CartContentComponent extends Component {
                                                     <th scope="col">Cart ID</th>
                                                     <th scope="col">Cart name</th>
                                                     <th scope="col">Cart date</th>
-                                                    <th scope="col">Account</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Feature</th>
                                                 </tr>

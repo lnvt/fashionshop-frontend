@@ -14,7 +14,6 @@ import CreateAccountComponent from '../admin/homepage/homepage-template/content-
 import CartContentComponent from '../admin/homepage/homepage-template/content-homepage/cart/CartContentComponent';
 
 import CodeSaleContentComponent from '../admin/homepage/homepage-template/content-homepage/codesale/CodeSaleContentComponent';
-import CreateCodeSaleComponent from '../admin/homepage/homepage-template/content-homepage/codesale/CreateCodeSaleComponent';
 
 import PostContentComponent from '../admin/homepage/homepage-template/content-homepage/post/PostContentComponent';
 import CreatePostComponent from '../admin/homepage/homepage-template/content-homepage/post/CreatePostComponent';
@@ -37,19 +36,19 @@ class RouterURL extends Component {
             <Switch>
               
               {/* Admin */}
+              <Route path="/detail/product/:id" component={UpdateProductComponent}/> 
               <Route path="/login" component={LoginComponent} />
               <Route path="/home-page" component={HomepageComponent} />
               <Route path="/account/:id" component={UpdateAccountComponent} />
               <Route path="/create/account" component={CreateAccountComponent} />
               <Route path="/cart" component={CartContentComponent}/>
               <Route path="/codesale" component={CodeSaleContentComponent}/> 
-              <Route path="/codesale/new" component={CreateCodeSaleComponent}/> 
               <Route path="/post" component={PostContentComponent}/> 
               <Route path="/post/new" component={CreatePostComponent}/> 
               <Route path="/post/:id" component={UpdatePostComponent}/> 
               <Route path="/product" component={ProductContentComponent}/> 
               <Route path="/product/new" component={CreateProductComponent}/> 
-              <Route path="/detail/product/:id" component={UpdateProductComponent}/> 
+              
               <Route path="/log-out" component={LogoutComponent} />
 
               {/* Client */}

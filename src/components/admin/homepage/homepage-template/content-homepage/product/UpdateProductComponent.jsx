@@ -9,7 +9,6 @@ class UpdateProductComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product:{},
             productId: this.props.match.params.id,
             productName: "",
             productCost: "",
@@ -19,14 +18,29 @@ class UpdateProductComponent extends Component {
             fkImageProduct: "",
             fkListProduct: 0,
         }
+        this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
     }
     
     componentDidMount = () => {
         this.retrieveProduct();
+        ProductService.retrieveProductService(this.props.productId)
+        .then(response => {
+            console.log(response.data)
+            this.setState({
+                productId: this.state.productId,
+                productName: response.data.productName,
+                productCost: response.data.productCost,
+                productDescription: response.data.productDescription,
+                productQuantity: response.data.productQuantity,
+                productStatus: response.data.productStatus,
+                fkImageProduct: response.data.fkImageProduct,
+                fkListProduct: response.data.fkListProduct,
+            })
+        })
     }
 
     retrieveProduct = () => {
-        ProductService.retrieveProductService(this.props.match.params.id)
+        ProductService.retrieveProductService(this.props.productId)
         .then(response => {
             console.log(response.data)
             this.setState({
@@ -43,27 +57,22 @@ class UpdateProductComponent extends Component {
     }
 
     onUpdateSubmit(values) {
-        // AccountService.updateAccount(this.state.accountId, {
-        //     accountId: this.state.accountId,
-        //     username: values.username,
-        //     password: values.password,
-        //     status: values.status,
-        //     createdDate: values.updateDate,
-        //     fkRoleAccount: values.fkRoleAccount
-        // }).then(
-        //     () => {
-        //         this.props.history.push('/homepage')
-        //     }
-        // )
-
-        // this.props.history.push('/home-page')
-        console.log(values)
+        // let product = {
+        //     productId: this.state.productId,
+        //     productName: values.productName,
+        //     productCost: values.productCost,
+        //     productDescription: values.productDescription,
+        //     productQuantity: values.productQuantity,
+        //     productStatus: values.productStatus,
+        //     fkImageProduct: values.fkImageProduct,
+        //     fkListProduct: values.fkListProduct,
+        // }
+        // console.log(product)
     }
 
 
     render() {
         let { productId, productName, productCost, productDescription, productQuantity, productStatus, fkImageProduct, fkListProduct} = this.state;
-        console.log(this.state.fkImageProduct)
         return (
             <div>
                <div className="contentPage">

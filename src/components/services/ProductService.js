@@ -24,6 +24,10 @@ class ProductService {
         return axios.put(`${url}/product/${id}`)
     }
 
+    createProductService(product){
+        return axios.post(`${url}/account`, product);
+    }
+
 }
 
 export default new ProductService()

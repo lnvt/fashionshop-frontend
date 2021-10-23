@@ -6,6 +6,7 @@ import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent
 import { Link } from 'react-router-dom';
 import LeftMenuComponent from '../../menu/LeftMenuComponent';
 import moment from 'moment';
+import AccountService from '../../../../../services/AccountService';
 
 class PostContentComponent extends Component {
 
@@ -15,16 +16,20 @@ class PostContentComponent extends Component {
             posts: [],
             post: {},
             comments:[],
+            account: {},
         }
     }
 
     componentDidMount = () => {
         this.retrieveAllPost();
+        this.retrieveAllComment();
+        this.retrieveAccount();
     }
 
     retrieveAllPost = () => {
         PostService.retrieveAllPostService()
             .then(response => {
+                console.log(response)
                 this.setState({
                     posts: response.data
                 })
@@ -32,10 +37,21 @@ class PostContentComponent extends Component {
     }
 
     retrieveAllComment = () => {
-        CommentService.retrieveAllComment()
+        CommentService.retrieveAllCommentService()
             .then(response => {
                 this.setState({
-                    posts: response.data
+                    comments: response.data
+                })
+            })
+    }
+
+    
+    retrieveAccount = () => {
+        AccountService.retrieveAccountService()
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    account: response.data
                 })
             })
     }

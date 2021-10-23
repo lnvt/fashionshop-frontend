@@ -14,6 +14,10 @@ class CartService {
     deleteCartService(id){
         return axios.delete(`${url}/cart/${id}`);
     }
+
+    updateCart(id, cart){
+        return axios.put(`${url}/cart/${id}`, cart);
+    }
 }
 
 export default new CartService()
