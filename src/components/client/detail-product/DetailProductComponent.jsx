@@ -71,6 +71,7 @@ class DetailProductComponent extends Component {
                 }}> {item.listProductName} </Link> </div>
             )
         }
+        return null;
     })
     AddProductIntoCart = () => {
         console.log("abc");

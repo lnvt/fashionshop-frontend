@@ -59,8 +59,8 @@ class ListProductComponent extends Component {
     // Cart
 
     addProductIntoCart = (productId,productName, productCost, productImage) => {
-        var listCartProducts = new Array();
-        var productCart = new Object();
+        var listCartProducts = [];
+        var productCart = {};
         productCart.productId = productId;
         productCart.productName = productName;
         productCart.productCost = productCost;
@@ -101,6 +101,7 @@ class ListProductComponent extends Component {
                         </div>
                 )
             }
+            return null;
         })
 
     getProductItems = () => {

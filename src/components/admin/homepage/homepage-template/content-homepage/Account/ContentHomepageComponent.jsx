@@ -4,8 +4,8 @@ import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent
 import './ContentHomepageStyle.css';
 import Swal from 'sweetalert2';
 import AccountService from '../../../../../services/AccountService';
+import RoleAccountService from '../../../../../services/RoleAccountService';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 
 class ContentHomepageComponent extends Component {
 
@@ -13,6 +13,7 @@ class ContentHomepageComponent extends Component {
         super(props)
         this.state = {
             accounts: [],
+            roleAccounts: [],
             message: null,
             showFormAddAccount: false,
             showFormUpdateAccount: false,
@@ -23,7 +24,6 @@ class ContentHomepageComponent extends Component {
 
     componentDidMount = () => {
 
-        // Services 
         this.retrieveAllAccount();
 
         const Toast = Swal.mixin({
@@ -42,6 +42,8 @@ class ContentHomepageComponent extends Component {
             icon: 'success',
             title: 'Signed in successfully'
           })
+
+          this.retrieveRoleAccount();
     }
 
     retrieveAllAccount = () => {
@@ -78,13 +80,35 @@ class ContentHomepageComponent extends Component {
 
     }
 
+    retrieveRoleAccount = () => {
+        RoleAccountService.retrieveAllRoleAccountService()
+        .then(response => {
+            this.setState({
+                roleAccounts: response.data
+            })
+        })
+    }
+
+    getRoleAccountName = (roleAccountIds) => this.state.roleAccounts.map((item, key) => {
+       if(item.roleId === roleAccountIds){
+            return (
+                <div key={key}>
+                    {item.roleName}
+                </div>
+            )
+       }
+       return null;
+    })
+
     mappingDataAllAccounts = () => this.state.accounts.map((item, key) =>  (
         <tr key={item.accountId}>
             <th scope="row">{item.accountId}</th>
             <td>{item.username}</td>
             <td>{item.password}</td>
             <td>{item.status.toString()}</td>
-            <td>{moment(item.createdDate).format('YYYY-MM-DD')}</td>
+            <td>
+                {this.getRoleAccountName(item.fkRoleAccount)}
+            </td>
             <td>
                 <Link to={{
                     pathname: `/account/${item.accountId}`
@@ -98,11 +122,6 @@ class ContentHomepageComponent extends Component {
         </tr>
     ))
 
-    getTextSearch = (dulieu) => {
-        this.setState({
-            searchText: dulieu
-        });
-    }
 
     render() {
         return (
@@ -130,7 +149,7 @@ class ContentHomepageComponent extends Component {
                                                 <th scope="col">UserName</th>
                                                 <th scope="col">Password</th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Created date</th>
+                                                <th scope="col">Role</th>
                                                 <th scope="col">Feature</th>
                                             </tr>
                                         </thead>

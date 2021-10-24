@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import FooterComponent from '../footer/FooterComponent';
 import Swal from 'sweetalert2';
 
-class PaymentComponent extends Component {
-
-
-    constructor(props) {
-        super(props);
-        
-    }
-    
+class PaymentComponent extends Component {    
 
     mappingCart = () => (
         <div className="container">

@@ -113,7 +113,6 @@ class CodeSaleContentComponent extends Component {
                                     <h1 className="mx-auto">Cart</h1>
                                 </div>
                                 <div className="addCodeSale">
-                                    <button className="btn btn-primary mb-2 mr-2" onClick={() => this.makeid(10)}> Generate CodeSale</button>
 
                                     <Formik
                                         initialValues={{

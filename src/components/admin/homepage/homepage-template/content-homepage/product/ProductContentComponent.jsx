@@ -6,6 +6,7 @@ import FooterHomepageComponent from '../../footer-homepage/FooterHomepageCompone
 import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent';
 import { Link } from 'react-router-dom';
 import LeftMenuComponent from '../../menu/LeftMenuComponent';
+import "react-pagination-library/build/css/index.css";
 
 class ProductContentComponent extends Component {
 
@@ -15,10 +16,9 @@ class ProductContentComponent extends Component {
             listproduct: [],
             products: [],
             images: [],
+            currentPage: 1
         }
     }
-
-
 
     componentDidMount = () => {
         this.retrieveAllListProduct();
@@ -64,7 +64,7 @@ class ProductContentComponent extends Component {
                 <Link to={{
                     pathname: `/detail/product/${item.productId}`
                 }}>
-                    <button className="btn btn-warning" style={{ width: 70 }}> Update </button>
+                    <button className="btn btn-warning" style={{ width: 100 }}> Update </button>
                 </Link>
                 &nbsp;
             </td>
@@ -72,6 +72,7 @@ class ProductContentComponent extends Component {
     ))
 
     render() {
+
         return (
             <div className="contentPage">
                 <div id="wrapper">
@@ -101,6 +102,7 @@ class ProductContentComponent extends Component {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <FooterHomepageComponent />
                     </div>

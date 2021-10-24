@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './MenuHeaderTopStyle.css';
 import 'reactjs-popup/dist/index.css';
 import Swal from 'sweetalert2';
-import { Button } from 'react-bootstrap';
-import CartComponent from '../cart/CartComponent';
+import ModalHeader from 'react-bootstrap/esm/ModalHeader';
+import { Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class MenuHeaderTopComponent extends Component {
 
@@ -11,7 +12,6 @@ class MenuHeaderTopComponent extends Component {
         super();
         this.state = {
             product: {},
-            retrieveDataCarts: [],
             show: false
         }
     }
@@ -23,9 +23,6 @@ class MenuHeaderTopComponent extends Component {
     }
 
     componentDidMount(){
-        this.setState({
-            retrieveDataCarts: this.props.sendDataProductsCartDatas
-        })
     }
 
     handleModal() {
@@ -33,7 +30,7 @@ class MenuHeaderTopComponent extends Component {
     }
 
     render() {
-        console.log(this.state.show)
+        console.log(this.props.sendDataProductsCartDatas)
         return (
             <div className="headertop">
                 <div className="">
@@ -84,8 +81,19 @@ class MenuHeaderTopComponent extends Component {
                     </div>
                     <div className="clear" />
                 </div>
-                <CartComponent
-                    checkModal = {this.state.show}/>
+                <Modal show={this.state.show} onHide={() => this.handleModal()}  className="modalCart">
+                    <ModalHeader>a</ModalHeader>
+                    <Modal.Body></Modal.Body>
+                    <Modal.Footer>
+                        <Link to={{
+                            pathname: "/payment"
+                        }}>
+                            <button className="btn btn-success">Payment</button>
+                        </Link>
+                        <Button
+                            onClick = {() => this.handleModal()}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
     }

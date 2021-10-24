@@ -20,8 +20,8 @@ class ProductService {
         return axios.delete(`${url}/product/${id}`);
     }
 
-    updateProductService(id){
-        return axios.put(`${url}/product/${id}`)
+    updateProductService(id, product){
+        return axios.put(`${url}/product/${id}`, product)
     }
 
     createProductService(product){

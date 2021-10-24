@@ -12,7 +12,9 @@ class CommentService {
         return axios.delete(`${url}/comment/${id}`);
     }
 
-    
+    createCommentService(comment){        
+        return axios.post(`${url}/comment`, comment);
+    }
 
 }
 

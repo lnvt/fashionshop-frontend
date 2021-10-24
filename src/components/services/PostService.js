@@ -12,12 +12,16 @@ class PostService {
         return axios.get(`${url}/post/${id}`);
     }
 
-    updatePost(id, post){
+    updatePostService(id, post){
         return axios.put(`${url}/post/${id}`, post);
     }
 
-    createPost(post){        
+    createPostService(post){        
         return axios.post(`${url}/post`, post);
+    }
+
+    deletePostService(id){
+        return axios.delete(`${url}/post/${id}`);
     }
 }
 

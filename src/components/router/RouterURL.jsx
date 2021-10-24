@@ -20,7 +20,6 @@ import CreatePostComponent from '../admin/homepage/homepage-template/content-hom
 import UpdatePostComponent from '../admin/homepage/homepage-template/content-homepage/post/UpdatePostComponent';
 
 import ProductContentComponent from '../admin/homepage/homepage-template/content-homepage/product/ProductContentComponent';
-import CreateProductComponent from '../admin/homepage/homepage-template/content-homepage/product/CreateProductComponent';
 import UpdateProductComponent from '../admin/homepage/homepage-template/content-homepage/product/UpdateProductComponent';
 import ListProductComponent from '../client/listproduct/ListProductComponent';
 import PaymentComponent from '../client/payment/PaymentComponent';
@@ -46,9 +45,7 @@ class RouterURL extends Component {
               <Route path="/post" component={PostContentComponent}/> 
               <Route path="/post/new" component={CreatePostComponent}/> 
               <Route path="/post/:id" component={UpdatePostComponent}/> 
-              <Route path="/product" component={ProductContentComponent}/> 
-              <Route path="/product/new" component={CreateProductComponent}/> 
-              
+              <Route path="/product" component={ProductContentComponent}/>
               <Route path="/log-out" component={LogoutComponent} />
 
               {/* Client */}

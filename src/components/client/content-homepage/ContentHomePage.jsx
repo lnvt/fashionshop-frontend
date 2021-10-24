@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ProductService from '../../services/ProductService';
 import ListProductService from '../../services/ListProductService';
 import { Link } from 'react-router-dom';
-import PaymentComponent from '../payment/PaymentComponent';
 
 class ContentHomePage extends Component {
 
@@ -57,7 +56,7 @@ class ContentHomePage extends Component {
     }
 
     mappingProduct = (listProductId) => this.state.products.map((item, key) => {
-        if (listProductId === item.fkListProduct && key < 7) {
+        if (listProductId === item.fkListProduct) {
             return (
                     <div className="grid_1_of_4 images_1_of_4">
                         <Link to = {{
@@ -81,7 +80,7 @@ class ContentHomePage extends Component {
 
             )
         }
-        
+        return null;
     })
 
     mappingList = () => this.state.listProducts.map((itemList, key) => (

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import CartService from '../../../../../services/CartService';
-import AccountService from '../../../../../services/AccountService';
 import FooterHomepageComponent from '../../footer-homepage/FooterHomepageComponent';
 import HeaderHompageComponent from '../../header-homepage/HeaderHompageComponent';
 import LeftMenuComponent from '../../menu/LeftMenuComponent';
 import moment from 'moment';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
 
 class CartContentComponent extends Component {
 
