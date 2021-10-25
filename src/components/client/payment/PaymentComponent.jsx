@@ -11,8 +11,38 @@ class PaymentComponent extends Component {
                     <img src={require(`../../imgs_product/SHOES/shoes_19.png`).default} style={{ width: 100 }} alt="" />
                 </div>
                 <div className="col-8">
-                    Name: Shoes 123<br />
-                    Cost:  1.500.000 VNĐ<br/>
+                    MLB PLAYBALL MULE MONOGRAM NEW YORK YANKEES WHITE<br />
+                    2.500.000 VNĐ<br/>
+                </div>
+                <hr />
+            </div>
+            <div className="row">
+                <div className="col-4">
+                    <img src={require(`../../imgs_product/CLOTHES/clothes_6.png`).default} style={{ width: 100 }} alt="" />
+                </div>
+                <div className="col-8">
+                    Clothes 6<br />
+                    1.500.000 VNĐ<br/>
+                </div>
+                <hr />
+            </div>
+            <div className="row">
+                <div className="col-4">
+                    <img src={require(`../../imgs_product/SHOES/shoes_1.png`).default} style={{ width: 100 }} alt="" />
+                </div>
+                <div className="col-8">
+                    MLB PLAYBALL ORIGIN MULE NEW YORK YANKEES BLACK<br />
+                    1.499.000<br/>
+                </div>
+                <hr />
+            </div>
+            <div className="row">
+                <div className="col-4">
+                    <img src={require(`../../imgs_product/COSMETICS/cosmetic_1.png`).default} style={{ width: 100 }} alt="" />
+                </div>
+                <div className="col-8">
+                Foodaholic Diamond - Brightening 23g<br />
+                8.500<br/>
                 </div>
                 <hr />
             </div>
@@ -20,7 +50,7 @@ class PaymentComponent extends Component {
     )
 
     confirmPayment = () => {
-        var cost = 15000000;
+        var cost = 9900000;
         Swal.fire({
             title: 'Payment order',
             text: `Cost: ${cost}`,
@@ -36,6 +66,7 @@ class PaymentComponent extends Component {
                 'Your order has been successfully paid',
                 'success'
               )
+              this.props.history.push('/daisyhouse')
             }
           })
     }

@@ -12,7 +12,8 @@ class MenuHeaderTopComponent extends Component {
         super();
         this.state = {
             product: {},
-            show: false
+            show: false,
+            retrieveProductCartDatas: [],
         }
     }
 
@@ -31,6 +32,9 @@ class MenuHeaderTopComponent extends Component {
 
     render() {
         console.log(this.props.sendDataProductsCartDatas)
+        // this.setState({
+        //     retrieveProductCartDatas: this.props.sendDataProductsCartDatas
+        // })
         return (
             <div className="headertop">
                 <div className="">
@@ -83,7 +87,16 @@ class MenuHeaderTopComponent extends Component {
                 </div>
                 <Modal show={this.state.show} onHide={() => this.handleModal()}  className="modalCart">
                     <ModalHeader>a</ModalHeader>
-                    <Modal.Body></Modal.Body>
+                    <Modal.Body>
+                        {
+                            this.props.sendDataProductsCartDatas.map((item, key) => (
+                                <div>
+                                    <h6> {item.productName} </h6>
+                                    <h6> {item.productCost} </h6>
+                                </div>
+                            ))
+                        }
+                    </Modal.Body>
                     <Modal.Footer>
                         <Link to={{
                             pathname: "/payment"
