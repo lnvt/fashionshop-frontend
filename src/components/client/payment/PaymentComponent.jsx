@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import FooterComponent from '../footer/FooterComponent';
 import Swal from 'sweetalert2';
+import { Button, Modal } from 'react-bootstrap';
+import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 
-class PaymentComponent extends Component {    
+class PaymentComponent extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            show: false
+        }
+    }
+
 
     mappingCart = () => (
         <div className="container">
@@ -12,7 +22,7 @@ class PaymentComponent extends Component {
                 </div>
                 <div className="col-8">
                     MLB PLAYBALL MULE MONOGRAM NEW YORK YANKEES WHITE<br />
-                    2.500.000 VNĐ<br/>
+                    2.500.000 VNĐ<br />
                 </div>
                 <hr />
             </div>
@@ -22,7 +32,7 @@ class PaymentComponent extends Component {
                 </div>
                 <div className="col-8">
                     Clothes 6<br />
-                    1.500.000 VNĐ<br/>
+                    1.500.000 VNĐ<br />
                 </div>
                 <hr />
             </div>
@@ -32,7 +42,7 @@ class PaymentComponent extends Component {
                 </div>
                 <div className="col-8">
                     MLB PLAYBALL ORIGIN MULE NEW YORK YANKEES BLACK<br />
-                    1.499.000<br/>
+                    1.499.000<br />
                 </div>
                 <hr />
             </div>
@@ -41,8 +51,8 @@ class PaymentComponent extends Component {
                     <img src={require(`../../imgs_product/COSMETICS/cosmetic_1.png`).default} style={{ width: 100 }} alt="" />
                 </div>
                 <div className="col-8">
-                Foodaholic Diamond - Brightening 23g<br />
-                8.500<br/>
+                    Foodaholic Diamond - Brightening 23g<br />
+                    8.500<br />
                 </div>
                 <hr />
             </div>
@@ -59,16 +69,20 @@ class PaymentComponent extends Component {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Pay'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
-                'Success',
-                'Your order has been successfully paid',
-                'success'
-              )
-              this.props.history.push('/daisyhouse')
+                Swal.fire(
+                    'Success',
+                    'Your order has been successfully paid',
+                    'success'
+                )
+                this.props.history.push('/daisyhouse')
             }
-          })
+        })
+    }
+
+    handleModal() {
+        this.setState({ show: !this.state.show })
     }
 
     render() {
@@ -122,19 +136,32 @@ class PaymentComponent extends Component {
                                     </div>
                                 </div>
                                 <div className="header_item header_top_3">
-                                    <button className="btn btn-warning bi bi-cart3" style={{ width: 50 }}></button>
+                                    <Button className="btn btn-warning bi bi-cart3" style={{ width: 50 }} onClick={() => this.handleModal()}></Button>
                                 </div>
                                 <div className="clear" />
                             </div>
+                            <Modal show={this.state.show} onHide={() => this.handleModal()} className="modalCart">
+                                <ModalHeader>
+                                    <h6>CART PRODUCTS</h6>
+                                </ModalHeader>
+                                <Modal.Body style={{marginLeft:126}}>
+                                    <img src={require(`../payment/imgs_cart/empty-cart.png`).default} style={{ width: 128, height: 128 }} alt="" />
+                                    <h6 style={{marginLeft:65}}>Empty cart</h6>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button
+                                        onClick={() => this.handleModal()}>Close</Button>
+                                </Modal.Footer>
+                            </Modal>
                         </div>
                     </div>
                     {this.mappingCart()}
-                    <button className = "btn btn-success" onClick  = {this.confirmPayment}>Payment</button>
+                    <button className="btn btn-success" onClick={this.confirmPayment}>Payment</button>
                     <div className="footer">
                         <FooterComponent />
                     </div>
                 </div>
-              
+
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MenuHeaderTopComponent from '../menu-header-top/MenuHeaderTopComponent';
+import MenuHeaderTopComponent2 from '../menu-header-top/MenuHeaderTopComponent2';
 import MenuHeaderBottomComponent from '../menu-header-bottom/MenuHeaderBottomComponent';
 import FooterComponent from '../footer/FooterComponent';
 import ProductService from '../../services/ProductService';
@@ -114,8 +114,7 @@ class ListProductComponent extends Component {
             <div>
                 <div className="">
                     <div className="header">
-                        <MenuHeaderTopComponent 
-                            cartProductItems = {this.state.listCartProducts}/>
+                        <MenuHeaderTopComponent2 />
                         <div className="header_bottom">
                             <MenuHeaderBottomComponent />
                         </div>

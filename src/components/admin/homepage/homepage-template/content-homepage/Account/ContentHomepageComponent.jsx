@@ -49,6 +49,7 @@ class ContentHomepageComponent extends Component {
     retrieveAllAccount = () => {
         AccountService.retrieveAllAccountService()
             .then(response => {
+                console.log(response)
                 this.setState({
                     accounts: response.data
                 })

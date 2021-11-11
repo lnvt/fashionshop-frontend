@@ -6,8 +6,7 @@ import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-class MenuHeaderTopComponent extends Component {
-
+class MenuHeaderTopComponent2 extends Component {
     constructor() {
         super();
         this.state = {
@@ -84,14 +83,7 @@ class MenuHeaderTopComponent extends Component {
                         <h6>CART PRODUCTS</h6>
                     </ModalHeader>
                     <Modal.Body>
-                        {   
-                            this.props.sendDataProductsCartDatas.map((item, key) => (
-                                <div>
-                                    <h6> {item.productName} </h6>
-                                    <h6> {item.productCost} </h6>
-                                </div>
-                            ))
-                        }
+                        
                     </Modal.Body>
                     <Modal.Footer>
                         <Link to={{
@@ -108,4 +100,4 @@ class MenuHeaderTopComponent extends Component {
     }
 }
 
-export default MenuHeaderTopComponent;
+export default MenuHeaderTopComponent2;
